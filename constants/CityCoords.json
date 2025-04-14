@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Tokyo",
+    "coords": {
+      "latitude": 35.6895,
+      "longitude": 139.69171
+    }
+  },
+  {
+    "name": "Paris",
+    "coords": {
+      "latitude": 48.85341,
+      "longitude": 2.3488
+    }
+  },
+  {
+    "name": "Hong Kong",
+    "coords": {
+      "latitude": 22.27832,
+      "longitude": 114.17469
+    }
+  },
+  {
+    "name": "Bangkok",
+    "coords": {
+      "latitude": 13.75398,
+      "longitude": 100.50144
+    }
+  },
+  {
+    "name": "Saint Petersburg",
+    "coords": {
+      "latitude": 59.93863,
+      "longitude": 30.31413
+    }
+  },
+  {
+    "name": "Kiev",
+    "coords": {
+      "latitude": 53.27456,
+      "longitude": 12.59377
+    }
+  },
+  {
+    "name": "Berlin",
+    "coords": {
+      "latitude": 52.52437,
+      "longitude": 13.41053
+    }
+  },
+  {
+    "name": "Dublin",
+    "coords": {
+      "latitude": 53.33306,
+      "longitude": -6.24889
+    }
+  },
+  {
+    "name": "London",
+    "coords": {
+      "latitude": 51.50853,
+      "longitude": -0.12574
+    }
+  },
+  {
+    "name": "New York",
+    "coords": {
+      "latitude": 40.71427,
+      "longitude": -74.00597
+    }
+  },
+  {
+    "name": "Mexico City",
+    "coords": {
+      "latitude": 19.42847,
+      "longitude": -99.12766
+    }
+  }
+]
