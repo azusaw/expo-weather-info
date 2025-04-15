@@ -1,6 +1,9 @@
 import { Coords } from "@/types";
-import { askAsync, LOCATION_FOREGROUND } from "expo-permissions";
-import { getCurrentPositionAsync } from "expo-location";
+import {
+  getCurrentPositionAsync,
+  requestForegroundPermissionsAsync,
+} from "expo-location";
+import Toast from "react-native-toast-message";
 
 export const getCurrentCoords = async () => {
   await getLocationPermissions();
@@ -10,10 +13,13 @@ export const getCurrentCoords = async () => {
   return { latitude, longitude } as Coords;
 };
 
-const getLocationPermissions = async () =>
-  await askAsync(LOCATION_FOREGROUND).then((res) => {
-    if (res.status !== "granted") {
-      //TODO: handle error
-      throw Error;
-    }
-  });
+const getLocationPermissions = async () => {
+  let { status } = await requestForegroundPermissionsAsync();
+  if (status !== "granted") {
+    Toast.show({
+      type: "error",
+      text1: "Permission was denied",
+      text2: "It needs a location permission from a system settings.",
+    });
+  }
+};

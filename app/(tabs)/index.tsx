@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { Coords, DailyWeather } from "@/types";
 import { View } from "@/components/Themed";
 import DailyWeatherCard from "@/components/DailyWeatherCard";
 import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
-import Toast from "react-native-toast-message";
+import CurrentWeatherView from "@/components/CurrentWeatherView";
+import { CurrentWeather } from "@/types/CurrentWeather";
 
 const Home = () => {
-  const [dailyWeather, setDailyWeather] = useState<DailyWeather>();
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeather>();
   const [weeklyWeather, setWeeklyWeather] = useState<DailyWeather[]>();
   const [coords, setCoords] = useState<Coords>();
 
@@ -23,19 +24,24 @@ const Home = () => {
 
   useEffect(() => {
     if (coords) {
-      getCurrentWeatherByCoords(coords).then((data) => setDailyWeather(data));
+      getCurrentWeatherByCoords(coords).then((data) => setCurrentWeather(data));
       getWeeklyWeatherByCoords(coords).then((data) => setWeeklyWeather(data));
     }
   }, [coords]);
 
   return (
     <View style={styles.container}>
-      {dailyWeather && (
-        <DailyWeatherCard title="Your location" data={dailyWeather} />
-      )}
-      {weeklyWeather?.map((weather) => (
-        <DailyWeatherCard title="Your location" data={weather} />
-      ))}
+      {currentWeather && <CurrentWeatherView data={currentWeather} />}
+      <View style={styles.weeklyWeather}>
+        <FlatList
+          horizontal
+          scrollEnabled={false}
+          data={weeklyWeather}
+          contentContainerStyle={styles.list}
+          renderItem={({ item }) => <DailyWeatherCard {...item} />}
+          keyExtractor={(item) => item.time}
+        />
+      </View>
     </View>
   );
 };
@@ -45,6 +51,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#ccecff",
+  },
+  weeklyWeather: {
+    flex: 1,
+    backgroundColor: "lightblue",
+    maxHeight: 300,
+  },
+  list: {
+    padding: 10,
+    paddingHorizontal: 10,
+    margin: 10,
+    backgroundColor: "pink",
   },
 });
 export default Home;

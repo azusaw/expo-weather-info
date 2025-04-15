@@ -2,27 +2,30 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Image } from "expo-image";
 import { View, Text } from "@/components/Themed";
-import WeatherCodeDesc from "../constants/weather-code-desc.json";
-import { WeatherCodeDetailDayNight } from "@/types/WeatherCodeDetail";
+import { getWeatherDetailFromCode } from "@/libs/getWeatherDetailFromCode";
 
-const getWeatherCodeDesc = (weatherCode: number): WeatherCodeDetailDayNight =>
-  // @ts-ignore
-  WeatherCodeDesc[`${weatherCode}`];
-
-const WeatherImage = ({ weatherCode }: { weatherCode: number }) => {
-  const weatherDayNight = getWeatherCodeDesc(weatherCode);
+const WeatherImage = ({
+  weatherCode,
+  withLabel = true,
+  isLarge = false,
+}: {
+  weatherCode: number;
+  withLabel?: boolean;
+  isLarge?: boolean;
+}) => {
+  const weatherDetail = getWeatherDetailFromCode(weatherCode);
   return (
-    weatherDayNight?.day && (
+    weatherDetail && (
       <View style={styles.container}>
         <Image
-          style={styles.image}
-          source={weatherDayNight.day.image}
+          style={isLarge ? styles.imageLarge : styles.image}
+          source={weatherDetail.image}
           contentFit="cover"
           transition={1000}
         />
-        <Text style={styles.description}>
-          {weatherDayNight.day.description}
-        </Text>
+        {withLabel && (
+          <Text style={styles.description}>{weatherDetail.description}</Text>
+        )}
       </View>
     )
   );
@@ -32,11 +35,15 @@ export default WeatherImage;
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    padding: 10,
   },
   image: {
+    padding: 10,
     height: 100,
-    width: 100,
+    width: 120,
+  },
+  imageLarge: {
+    height: 140,
+    width: 200,
   },
   description: {
     fontSize: 16,

@@ -6,28 +6,31 @@ import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { View } from "@/components/Themed";
 import DailyWeatherCard from "@/components/DailyWeatherCard";
 import CityCoords from "@/constants/city-coords.json";
+import { CurrentWeather } from "@/types/CurrentWeather";
+import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
 
 const SelectByCity = () => {
   const [selectedCityIndex, setSelectedCityIndex] = useState<IndexPath>();
-  const [dailyWeather, setDailyWeather] = useState<DailyWeather>();
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeather>();
+  const [weeklyWeather, setWeeklyWeather] = useState<DailyWeather[]>();
 
   //TODO: cache it with tanstack query later
   useEffect(() => {
-    selectedCityIndex &&
-      getCurrentWeatherByCoords(CityCoords[selectedCityIndex.row].coords).then(
-        (data) => setDailyWeather(data),
-      );
+    if (selectedCityIndex) {
+      const coords = CityCoords[selectedCityIndex.row].coords;
+      getCurrentWeatherByCoords(coords).then((data) => setCurrentWeather(data));
+      getWeeklyWeatherByCoords(coords).then((data) => setWeeklyWeather(data));
+    }
   }, [selectedCityIndex]);
 
-  const dailyWeatherComponent = useMemo(
-    () =>
-      dailyWeather && (
-        <DailyWeatherCard
-          title={CityCoords[selectedCityIndex.row].name}
-          data={dailyWeather}
-        />
-      ),
-    [dailyWeather],
+  const currentWeatherComponent = useMemo(
+    () => currentWeather && <CurrentWeather {...currentWeather} />,
+    [currentWeather],
+  );
+
+  const weeklyWeatherComponent = useMemo(
+    () => weeklyWeather?.map((weather) => <DailyWeatherCard {...weather} />),
+    [weeklyWeather],
   );
 
   return (
@@ -45,10 +48,11 @@ const SelectByCity = () => {
         placeholder="Select the city.."
       >
         {CityCoords.map(({ name }) => (
-          <SelectItem title={name} />
+          <SelectItem key={name} title={name} />
         ))}
       </Select>
-      {dailyWeatherComponent}
+      {currentWeatherComponent}
+      {weeklyWeatherComponent}
     </View>
   );
 };

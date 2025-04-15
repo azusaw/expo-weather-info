@@ -1,38 +1,41 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { DailyWeather } from "@/types";
-import { Card } from "@ui-kitten/components";
-import { Text } from "@/components/Themed";
+import { Text, View } from "@/components/Themed";
 import WeatherImage from "@/components/WeatherImage";
+import dayjs from "dayjs";
 
 const DailyWeatherCard = ({
-  title,
-  data,
-}: {
-  title: string;
-  data: DailyWeather;
-}) => {
-  return (
-    <Card style={styles.card}>
-      <Text style={styles.cardTitle}>{title}</Text>
-      <WeatherImage weatherCode={data.weatherCode} />
-      <Text style={styles.temperature}>
-        {data.temperature2mMin}
-        <span style={styles.slash}>/</span>
-        {data.temperature2mMax}
-        <span style={styles.suffix}>℃</span>
-      </Text>
-    </Card>
-  );
-};
+  time,
+  weatherCode,
+  temperatureMin,
+  temperatureMax,
+}: DailyWeather) => (
+  <View style={styles.card}>
+    <Text style={styles.date}>{dayjs(time).format("DD ddd")}</Text>
+    <WeatherImage weatherCode={weatherCode} />
+    <Text style={styles.temperature}>
+      {temperatureMin}
+      <Text style={styles.slash}>/</Text>
+      {temperatureMax}
+      <Text style={styles.suffix}>℃</Text>
+    </Text>
+  </View>
+);
 export default DailyWeatherCard;
 
 const styles = StyleSheet.create({
   card: {
-    alignItems: "center",
     minWidth: 200,
+    alignItems: "center",
+    backgroundColor: "#fff",
+    elevation: 3,
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 20,
+    borderRadius: 10,
   },
-  cardTitle: {
+  date: {
     textAlign: "center",
     fontSize: 24,
   },
@@ -41,7 +44,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 12,
-    fontSize: 42,
+    fontSize: 20,
     fontWeight: 100,
   },
   slash: {
