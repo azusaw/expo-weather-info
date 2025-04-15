@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 import { IndexPath, Select, SelectItem } from "@ui-kitten/components";
 import { DailyWeather } from "@/types";
-import { getWeatherByCoords } from "@/libs/getWeatherByCoords";
+import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { View } from "@/components/Themed";
 import DailyWeatherCard from "@/components/DailyWeatherCard";
 import CityCoords from "@/constants/city-coords.json";
@@ -14,7 +14,7 @@ const SelectByCity = () => {
   //TODO: cache it with tanstack query later
   useEffect(() => {
     selectedCityIndex &&
-      getWeatherByCoords(CityCoords[selectedCityIndex.row].coords).then(
+      getCurrentWeatherByCoords(CityCoords[selectedCityIndex.row].coords).then(
         (data) => setDailyWeather(data),
       );
   }, [selectedCityIndex]);

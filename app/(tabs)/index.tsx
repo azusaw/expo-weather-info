@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import { getWeatherByCoords } from "@/libs/getWeatherByCoords";
+import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { Coords, DailyWeather } from "@/types";
 import { View } from "@/components/Themed";
 import DailyWeatherCard from "@/components/DailyWeatherCard";
+import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
+import Toast from "react-native-toast-message";
 
 const Home = () => {
   const [dailyWeather, setDailyWeather] = useState<DailyWeather>();
+  const [weeklyWeather, setWeeklyWeather] = useState<DailyWeather[]>();
   const [coords, setCoords] = useState<Coords>();
 
   useEffect(() => {
@@ -19,7 +22,10 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    coords && getWeatherByCoords(coords).then((data) => setDailyWeather(data));
+    if (coords) {
+      getCurrentWeatherByCoords(coords).then((data) => setDailyWeather(data));
+      getWeeklyWeatherByCoords(coords).then((data) => setWeeklyWeather(data));
+    }
   }, [coords]);
 
   return (
@@ -27,6 +33,9 @@ const Home = () => {
       {dailyWeather && (
         <DailyWeatherCard title="Your location" data={dailyWeather} />
       )}
+      {weeklyWeather?.map((weather) => (
+        <DailyWeatherCard title="Your location" data={weather} />
+      ))}
     </View>
   );
 };
