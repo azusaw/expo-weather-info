@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import { View } from "@/components/Themed";
 import { getWeatherByCoords } from "@/libs/getWeatherByCoords";
-import { Coords, DailyWeather } from "@/types";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
+import { Coords, DailyWeather } from "@/types";
+import { View } from "@/components/Themed";
+import DailyWeatherCard from "@/components/DailyWeatherCard";
 
 const Home = () => {
   const [dailyWeather, setDailyWeather] = useState<DailyWeather>();
@@ -24,11 +25,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       {dailyWeather && (
-        <ul>
-          <li>weather_code: {dailyWeather.weather_code}</li>
-          <li>temperature_2m_min: {dailyWeather.temperature_2m_min}</li>
-          <li>temperature_2m_max: {dailyWeather.temperature_2m_max}</li>
-        </ul>
+        <DailyWeatherCard title="Your location" data={dailyWeather} />
       )}
     </View>
   );

@@ -1,10 +1,11 @@
-import { StyleSheet } from "react-native";
-import { View } from "@/components/Themed";
-import { IndexPath, Select, SelectItem } from "@ui-kitten/components";
 import { useEffect, useMemo, useState } from "react";
+import { StyleSheet } from "react-native";
+import { IndexPath, Select, SelectItem } from "@ui-kitten/components";
 import { DailyWeather } from "@/types";
 import { getWeatherByCoords } from "@/libs/getWeatherByCoords";
-import CityCoords from "@/constants/CityCoords.json";
+import { View } from "@/components/Themed";
+import DailyWeatherCard from "@/components/DailyWeatherCard";
+import CityCoords from "@/constants/city-coords.json";
 
 const SelectByCity = () => {
   const [selectedCityIndex, setSelectedCityIndex] = useState<IndexPath>();
@@ -21,11 +22,10 @@ const SelectByCity = () => {
   const dailyWeatherComponent = useMemo(
     () =>
       dailyWeather && (
-        <ul>
-          <li>weather_code: {dailyWeather.weather_code}</li>
-          <li>temperature_2m_min: {dailyWeather.temperature_2m_min}</li>
-          <li>temperature_2m_max: {dailyWeather.temperature_2m_max}</li>
-        </ul>
+        <DailyWeatherCard
+          title={CityCoords[selectedCityIndex.row].name}
+          data={dailyWeather}
+        />
       ),
     [dailyWeather],
   );
