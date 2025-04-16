@@ -1,12 +1,5 @@
-/**
- * Learn more about Light and Dark modes:
- * https://docs.expo.io/guides/color-schemes/
- */
-
 import { Text as DefaultText, View as DefaultView } from "react-native";
-
 import Colors from "@/constants/Colors";
-import { components } from "@eva-design/eva/mapping";
 
 type ThemeProps = {
   lightColor?: string;
@@ -21,21 +14,6 @@ type FontProps = {
 
 export type TextProps = ThemeProps & FontProps & DefaultText["props"];
 export type ViewProps = ThemeProps & DefaultView["props"];
-
-export function useThemeColor(
-  props: { light?: string; dark?: string },
-  colorName: keyof typeof Colors.light & keyof typeof Colors.dark,
-) {
-  const theme = "light";
-  // const theme = useColorScheme() ?? 'light';
-  const colorFromProps = props[theme];
-
-  if (colorFromProps) {
-    return colorFromProps;
-  } else {
-    return Colors[theme][colorName];
-  }
-}
 
 const getFontFamily = (fontWeight: number) => {
   switch (fontWeight) {
@@ -63,8 +41,14 @@ const getFontFamily = (fontWeight: number) => {
 };
 
 export function Text(props: TextProps) {
-  const { style, size = 24, weight, color = "#888", ...otherProps } = props;
-  const fontFamily = getFontFamily(weight ?? 400);
+  const {
+    style,
+    size = 24,
+    weight = 400,
+    color = Colors.text.dark,
+    ...otherProps
+  } = props;
+  const fontFamily = getFontFamily(weight);
 
   return (
     <DefaultText
@@ -76,10 +60,6 @@ export function Text(props: TextProps) {
 
 export function View(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
-  // const backgroundColor = useThemeColor(
-  //   { light: lightColor, dark: darkColor },
-  //   "background",
-  // );
   const backgroundColor = "inherit";
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;

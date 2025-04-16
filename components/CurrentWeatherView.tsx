@@ -6,6 +6,7 @@ import { Text, View } from "@/components/Themed";
 import { getWeatherDetailFromCode } from "@/libs/getWeatherDetailFromCode";
 import { CurrentWeather } from "@/types";
 import Icon, { IconType } from "@/components/Icon";
+import Colors from "@/constants/Colors";
 
 const CurrentWeatherView = ({
   data,
@@ -36,7 +37,7 @@ const CurrentWeatherView = ({
       <View style={styles.card}>
         {infoItems.map(({ label, icon, data }) => (
           <View style={styles.cardItem}>
-            <Icon name={icon} size={40} color={"#fff"} />
+            <Icon name={icon} size={40} color={Colors.primary.default} />
             <Text size={24} style={{ marginTop: 20 }}>
               {data}
             </Text>
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   date: {
-    backgroundColor: "black",
+    backgroundColor: Colors.primary.dark,
     paddingHorizontal: 20,
     paddingVertical: 5,
     borderRadius: 20,
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     width: 320,
     paddingVertical: 30,
     borderRadius: 10,
-    backgroundColor: "#222",
+    backgroundColor: Colors.primary.dark,
   },
   cardItem: {
     backgroundColor: "transparent",

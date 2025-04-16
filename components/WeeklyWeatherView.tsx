@@ -3,18 +3,19 @@ import { Dimensions, FlatList, StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import DailyWeatherCard from "@/components/DailyWeatherCard";
 import { DailyWeather } from "@/types";
+import Colors from "@/constants/Colors";
 
 const { width } = Dimensions.get("window");
 
 const WeeklyWeatherView = ({ data }: { data: DailyWeather[] }) => (
   <View style={styles.weeklyWeather}>
     <View style={styles.title}>
-      <Text size={20} weight={300}>
+      <Text size={20} weight={300} color={Colors.text.light}>
         {"Weekly forecast"}
       </Text>
       <View style={styles.arrowContainer}>
-        <View style={{ ...styles.arrow, ...styles.arrowHorizontal }} />
-        <View style={{ ...styles.arrow, ...styles.arrowDiagonal }} />
+        <View style={[styles.arrow, styles.arrowHorizontal]} />
+        <View style={[styles.arrow, styles.arrowDiagonal]} />
       </View>
     </View>
     <FlatList
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   arrow: {
-    backgroundColor: "#888",
+    backgroundColor: Colors.text.light,
     position: "absolute",
     height: 2,
     borderRadius: 5,
