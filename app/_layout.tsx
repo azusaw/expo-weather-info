@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { ApplicationProvider } from "@ui-kitten/components";
-import * as eva from "@eva-design/eva";
+import { Pressable, StyleSheet } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
 import * as SplashScreen from "expo-splash-screen";
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   Montserrat_100Thin,
   Montserrat_200ExtraLight,
@@ -15,17 +19,12 @@ import {
   Montserrat_800ExtraBold,
   Montserrat_900Black,
 } from "@expo-google-fonts/montserrat";
-import "react-native-reanimated";
 import Toast from "react-native-toast-message";
 import { View } from "@/components/Themed";
-import { Pressable, StyleSheet } from "react-native";
 import CityList from "@/components/CityList";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Animated, {
-  useAnimatedStyle,
-  withSpring,
-} from "react-native-reanimated";
+import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import Colors from "@/constants/Colors";
+import { useLocationStore } from "@/store/useLocationStore";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -67,12 +66,15 @@ export default function RootLayout() {
 }
 
 const RootLayoutNav = () => {
+  const { setLocation } = useLocationStore();
   const [isShowCityList, setIsShowCityList] = useState(false);
 
   const toggleCityList = () => setIsShowCityList(!isShowCityList);
 
-  const setCurrentLocation = () => {
-    //TODO: set current location to data store
+  const setCurrentLocation = async () => {
+    await getCurrentCoords().then((data) =>
+      setLocation({ name: "Your Location", coords: data }),
+    );
     isShowCityList && toggleCityList();
   };
 
@@ -102,7 +104,7 @@ const RootLayoutNav = () => {
   });
 
   return (
-    <ApplicationProvider {...eva} theme={eva.light}>
+    <>
       <Toast />
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -120,7 +122,7 @@ const RootLayoutNav = () => {
           </Pressable>
         </View>
       </View>
-    </ApplicationProvider>
+    </>
   );
 };
 

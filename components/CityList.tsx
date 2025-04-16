@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import CityCoords from "@/assets/json/city-coords.json";
-import { Text, View } from "./Themed";
+import CityLocations from "@/assets/json/city-location.json";
 import Colors from "@/constants/Colors";
+import { Text, View } from "./Themed";
+import { useLocationStore } from "@/store/useLocationStore";
 
 const CityList = React.memo(({ onClose }: { onClose: () => void }) => {
+  const { setLocation } = useLocationStore();
   const [selectedCityIndex, setSelectedCityIndex] = useState<number>();
 
-  const onSelect = (index: number) => {
-    setSelectedCityIndex(index);
-    //TODO: set selected city to data store
+  const onSelect = async (index: number) => {
+    setSelectedCityIndex(index); // for showing active color
+    await setLocation(CityLocations[index]);
     onClose();
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.menuBox}>
-        {CityCoords.map(({ name }, index) => (
+        {CityLocations.map(({ name }, index) => (
           <TouchableOpacity key={name} onPress={() => onSelect(index)}>
             <View
               style={
@@ -27,9 +29,8 @@ const CityList = React.memo(({ onClose }: { onClose: () => void }) => {
             >
               <Text size={18}>{name}</Text>
             </View>
-            {index < CityCoords.length - 1 && <View style={styles.border} />}
+            {index < CityLocations.length - 1 && <View style={styles.border} />}
           </TouchableOpacity>
-          // <MenuItem style={styles.menuItem} key={name} title={name} />
         ))}
       </View>
     </View>

@@ -2,38 +2,47 @@ import React, { useEffect, useState } from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
-import { Coords, DailyWeather } from "@/types";
-import { Text, View } from "@/components/Themed";
 import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
+import { CurrentWeather, DailyWeather } from "@/types";
+import { View } from "@/components/Themed";
 import CurrentWeatherView from "@/components/CurrentWeatherView";
-import { CurrentWeather } from "@/types/CurrentWeather";
 import WeeklyWeatherView from "@/components/WeeklyWeatherView";
+import { useLocationStore } from "@/store/useLocationStore";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const Home = () => {
+  const location = useLocationStore((state) => state.location);
+  const { setLocation } = useLocationStore();
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather>();
   const [weeklyWeather, setWeeklyWeather] = useState<DailyWeather[]>();
-  const [coords, setCoords] = useState<Coords>();
+
+  const setCurrentLocation = async () => {
+    await getCurrentCoords().then((data) =>
+      setLocation({ name: "Your Location", coords: data }),
+    );
+  };
 
   useEffect(() => {
-    //TODO: refactor it later
-    async function setLocation() {
-      await getCurrentCoords().then((data) => setCoords(data));
-    }
-    setLocation();
+    setCurrentLocation();
   }, []);
 
   useEffect(() => {
-    if (coords) {
-      getCurrentWeatherByCoords(coords).then((data) => setCurrentWeather(data));
-      getWeeklyWeatherByCoords(coords).then((data) => setWeeklyWeather(data));
+    if (location) {
+      getCurrentWeatherByCoords(location.coords).then((data) =>
+        setCurrentWeather(data),
+      );
+      getWeeklyWeatherByCoords(location.coords).then((data) =>
+        setWeeklyWeather(data),
+      );
     }
-  }, [coords]);
+  }, [location]);
 
   return (
     <View style={styles.container}>
-      {currentWeather && <CurrentWeatherView data={currentWeather} />}
+      {currentWeather && (
+        <CurrentWeatherView siteName={location?.name} data={currentWeather} />
+      )}
       {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
     </View>
   );

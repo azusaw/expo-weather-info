@@ -24,7 +24,6 @@ const DailyWeatherCard = ({
     </Text>
   </View>
 );
-export default DailyWeatherCard;
 
 const styles = StyleSheet.create({
   card: {
@@ -36,3 +35,5 @@ const styles = StyleSheet.create({
     maxHeight: 180,
   },
 });
+
+export default DailyWeatherCard;

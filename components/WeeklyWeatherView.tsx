@@ -64,4 +64,5 @@ const styles = StyleSheet.create({
     transform: [{ rotate: "45deg" }],
   },
 });
+
 export default WeeklyWeatherView;

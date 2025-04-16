@@ -22,7 +22,6 @@ const WeatherImage = ({ weatherCode }: { weatherCode: number }) => {
     )
   );
 };
-export default WeatherImage;
 
 const styles = StyleSheet.create({
   container: {
@@ -33,3 +32,5 @@ const styles = StyleSheet.create({
     width: 80,
   },
 });
+
+export default WeatherImage;

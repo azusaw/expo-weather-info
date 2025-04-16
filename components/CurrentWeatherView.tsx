@@ -51,8 +51,6 @@ const CurrentWeatherView = ({
   );
 };
 
-export default CurrentWeatherView;
-
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -85,3 +83,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+export default CurrentWeatherView;

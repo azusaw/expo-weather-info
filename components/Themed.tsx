@@ -40,7 +40,7 @@ const getFontFamily = (fontWeight: number) => {
   }
 };
 
-export function Text(props: TextProps) {
+export const Text = (props: TextProps) => {
   const {
     style,
     size = 24,
@@ -56,11 +56,11 @@ export function Text(props: TextProps) {
       {...otherProps}
     />
   );
-}
+};
 
-export function View(props: ViewProps) {
+export const View = (props: ViewProps) => {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = "inherit";
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
-}
+};

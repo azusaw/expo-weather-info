@@ -5,7 +5,7 @@ import path from "node:path";
 import axios from "axios";
 
 const GEO_CODING_URL = "https://geocoding-api.open-meteo.com/v1/search";
-const filePath = path.resolve(__dirname, "assets/json/city-coords.json");
+const filePath = path.resolve(__dirname, "assets/json/city-location.json");
 
 const getCoordsByCityName = async (cityName: string): Promise<Coords> =>
   //TODO: handle error later (in interceptor or here)
@@ -43,5 +43,5 @@ async function saveCityCoordsData() {
     console.error("Failed to write file:", err);
   }
 }
-// For generating CityCoords.json in ./constants
+// For generating city-location.json in ./assets/json
 saveCityCoordsData();
