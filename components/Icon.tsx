@@ -27,7 +27,7 @@ const getIconPath = (name: IconType) => {
   }
 };
 
-const SvgIcon: React.FC<IconProps> = ({ name, size = 100, color = "#888" }) => (
+const SvgIcon = ({ name, size = 100, color = "#888" }: IconProps) => (
   <Svg viewBox="0 0 570 570" width={size} height={size} fill={color}>
     {getIconPath(name)}
   </Svg>

@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   activeItem: {
     padding: 15,
-    backgroundColor: Colors.primary.default,
+    backgroundColor: Colors.secondary.light,
     borderLeftWidth: 6,
     borderLeftColor: Colors.secondary.default,
   },

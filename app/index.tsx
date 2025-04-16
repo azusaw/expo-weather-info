@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Dimensions, StyleSheet } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
 import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
-import { CurrentWeather, DailyWeather } from "@/types";
+import { Coords, CurrentWeather, DailyWeather } from "@/types";
 import { View } from "@/components/Themed";
 import CurrentWeatherView from "@/components/CurrentWeatherView";
 import WeeklyWeatherView from "@/components/WeeklyWeatherView";
+import BouncingDots from "@/components/BouncingDots";
 import { useLocationStore } from "@/store/useLocationStore";
+import Colors from "@/constants/Colors";
 
 const { width } = Dimensions.get("window");
 
 const Home = () => {
   const location = useLocationStore((state) => state.location);
   const { setLocation } = useLocationStore();
+  const [isLoading, setIsLoading] = useState(true);
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather>();
   const [weeklyWeather, setWeeklyWeather] = useState<DailyWeather[]>();
 
@@ -23,27 +30,49 @@ const Home = () => {
     );
   };
 
+  const refreshWeather = async (coords: Coords) => {
+    setIsLoading(true);
+    await Promise.all([
+      getCurrentWeatherByCoords(coords).then((data) => setCurrentWeather(data)),
+      getWeeklyWeatherByCoords(coords).then((data) => setWeeklyWeather(data)),
+    ]).finally(() => setIsLoading(false));
+  };
+
   useEffect(() => {
     setCurrentLocation();
   }, []);
 
   useEffect(() => {
-    if (location) {
-      getCurrentWeatherByCoords(location.coords).then((data) =>
-        setCurrentWeather(data),
-      );
-      getWeeklyWeatherByCoords(location.coords).then((data) =>
-        setWeeklyWeather(data),
-      );
-    }
+    location && refreshWeather(location.coords);
   }, [location]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        translateY: withSpring(isLoading ? 10 : 0, {
+          stiffness: 100,
+          damping: 40,
+        }),
+      },
+    ],
+    opacity: withSpring(isLoading ? 0 : 1),
+  }));
 
   return (
     <View style={styles.container}>
-      {currentWeather && (
-        <CurrentWeatherView siteName={location?.name} data={currentWeather} />
+      {isLoading ? (
+        <BouncingDots />
+      ) : (
+        <Animated.View style={animatedStyle}>
+          {currentWeather && (
+            <CurrentWeatherView
+              siteName={location?.name}
+              data={currentWeather}
+            />
+          )}
+          {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
+        </Animated.View>
       )}
-      {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
     </View>
   );
 };
@@ -56,7 +85,7 @@ const styles = StyleSheet.create({
     overflowY: "scroll",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#4a4b4c",
+    backgroundColor: Colors.background,
     paddingBottom: 40, // for menu button
   },
 });

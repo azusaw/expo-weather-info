@@ -88,20 +88,18 @@ const RootLayoutNav = () => {
     />
   );
 
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          translateY: withSpring(isShowCityList ? 0 : -20, {
-            stiffness: 200,
-            damping: 20,
-          }),
-        },
-      ],
-      opacity: withSpring(isShowCityList ? 1 : 0),
-      pointerEvents: isShowCityList ? "auto" : "none",
-    };
-  });
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        translateY: withSpring(isShowCityList ? 0 : -20, {
+          stiffness: 200,
+          damping: 20,
+        }),
+      },
+    ],
+    opacity: withSpring(isShowCityList ? 1 : 0),
+    pointerEvents: isShowCityList ? "auto" : "none",
+  }));
 
   return (
     <>

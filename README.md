@@ -1,15 +1,16 @@
 # expo-weather-info
 
-### Environment
+### Environment / Libraries 🔧
 * node `20.19.0`
 * npx `10.8.2`
-* ReactNative UI Kitten `5.3.1`
+* react-native-async-storage `^2.1.2`
+* zustand `^5.0.3`
 
-### Libraries / data
+### Data ⛅️
 * [WMO weather interpretation code descriptions & images](https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c)
 
 
-### Design inspiration
+### Design inspiration 💫
 * [Dribble | Weather app by Desire Creative Agency](https://dribbble.com/shots/20675054-Mobile-Weather-app)
 * [Deep Dive: If We Designed a Mobile App for Weather](https://pointsnorthstudio.com/blog/deep-dive-if-we-designed-a-weather-app/)
 
