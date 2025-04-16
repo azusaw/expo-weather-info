@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { Coords, DailyWeather } from "@/types";
@@ -8,6 +8,8 @@ import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
 import CurrentWeatherView from "@/components/CurrentWeatherView";
 import { CurrentWeather } from "@/types/CurrentWeather";
 import WeeklyWeatherView from "@/components/WeeklyWeatherView";
+
+const { width, height } = Dimensions.get("window");
 
 const Home = () => {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather>();
@@ -40,9 +42,13 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    maxWidth: width,
+    overflowX: "hidden",
+    overflowY: "scroll",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#4a4b4c",
+    paddingBottom: 40, // for menu button
   },
 });
 export default Home;

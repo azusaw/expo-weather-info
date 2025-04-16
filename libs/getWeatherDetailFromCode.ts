@@ -1,5 +1,5 @@
 import { WeatherCodeDetail } from "@/types";
-import WeatherCodeDesc from "@/constants/weather-code-desc.json";
+import WeatherCodeDesc from "@/assets/json/weather-code-desc.json";
 
 export const getWeatherDetailFromCode = (
   weatherCode: number,
