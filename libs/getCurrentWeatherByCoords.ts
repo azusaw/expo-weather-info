@@ -34,6 +34,6 @@ export const getCurrentWeatherByCoords = async (
           temperature: data.temperature_2m,
           rain: data.rain,
           windSpeed: data.wind_speed_10m,
-          relativeHumidity: data.relative_humidity_2m,
+          humidity: data.relative_humidity_2m,
         } as CurrentWeather),
     );

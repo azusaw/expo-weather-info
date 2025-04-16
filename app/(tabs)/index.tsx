@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet } from "react-native";
 import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { Coords, DailyWeather } from "@/types";
-import { View } from "@/components/Themed";
-import DailyWeatherCard from "@/components/DailyWeatherCard";
+import { Text, View } from "@/components/Themed";
 import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
 import CurrentWeatherView from "@/components/CurrentWeatherView";
 import { CurrentWeather } from "@/types/CurrentWeather";
+import WeeklyWeatherView from "@/components/WeeklyWeatherView";
 
 const Home = () => {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather>();
@@ -32,16 +32,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       {currentWeather && <CurrentWeatherView data={currentWeather} />}
-      <View style={styles.weeklyWeather}>
-        <FlatList
-          horizontal
-          scrollEnabled={false}
-          data={weeklyWeather}
-          contentContainerStyle={styles.list}
-          renderItem={({ item }) => <DailyWeatherCard {...item} />}
-          keyExtractor={(item) => item.time}
-        />
-      </View>
+      {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
     </View>
   );
 };
@@ -51,18 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ccecff",
-  },
-  weeklyWeather: {
-    flex: 1,
-    backgroundColor: "lightblue",
-    maxHeight: 300,
-  },
-  list: {
-    padding: 10,
-    paddingHorizontal: 10,
-    margin: 10,
-    backgroundColor: "pink",
+    backgroundColor: "#4a4b4c",
   },
 });
 export default Home;

@@ -4,5 +4,5 @@ export type CurrentWeather = {
   temperature: number;
   rain: number;
   windSpeed: number;
-  relativeHumidity: number;
+  humidity: number;
 };

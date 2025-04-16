@@ -5,6 +5,7 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { getWeatherDetailFromCode } from "@/libs/getWeatherDetailFromCode";
 import { CurrentWeather } from "@/types";
+import Icon, { IconType } from "@/components/Icon";
 
 const CurrentWeatherView = ({
   data,
@@ -12,68 +13,74 @@ const CurrentWeatherView = ({
 }: {
   data: CurrentWeather;
   siteName?: string;
-}) => (
-  <View style={styles.container}>
-    <Text style={styles.siteName}>{siteName}</Text>
-    <Text style={styles.time}>{dayjs(data.time).format("dddd, d MMM")}</Text>
-    <Text style={styles.description}>
-      {getWeatherDetailFromCode(data.weatherCode).description}
-    </Text>
-    <Text style={styles.temperature}>{`${data.temperature}°`}</Text>
-    <View style={styles.card}>
-      <View>{data.rain}</View>
-      <Text>{data.windSpeed}km/h</Text>
-      <Text>{data.relativeHumidity}%</Text>
+}) => {
+  const infoItems: { label: string; icon: IconType; data: string }[] = [
+    { label: "Rain", icon: IconType.Rain, data: `${data.rain}mm` },
+    { label: "Wind", icon: IconType.Wind, data: `${data.windSpeed}km/h` },
+    { label: "Humidity", icon: IconType.Drop, data: `${data.humidity}%` },
+  ];
+  return (
+    <View style={styles.container}>
+      <Text size={28} weight={600} style={styles.siteName}>
+        {siteName}
+      </Text>
+      <Text size={16} weight={300} style={styles.date}>
+        {dayjs(data.time).format("dddd, d MMM")}
+      </Text>
+      <Text size={24} weight={300}>
+        {getWeatherDetailFromCode(data.weatherCode).description}
+      </Text>
+      <Text size={140} weight={400}>
+        {data.temperature}
+      </Text>
+      <View style={styles.card}>
+        {infoItems.map(({ label, icon, data }) => (
+          <View style={styles.cardItem}>
+            <Icon name={icon} size={40} color={"#fff"} />
+            <Text size={24} style={{ marginTop: 20 }}>
+              {data}
+            </Text>
+            <Text size={14} style={{ marginTop: 10 }}>
+              {label}
+            </Text>
+          </View>
+        ))}
+      </View>
     </View>
-  </View>
-);
+  );
+};
+
 export default CurrentWeatherView;
 
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     minWidth: 400,
+    backgroundColor: "inherit",
   },
   siteName: {
-    fontWeight: 500,
-    fontSize: 28,
-    marginBottom: 36,
+    marginBottom: 20,
   },
-  time: {
-    fontWeight: 300,
-    fontSize: 16,
+  date: {
     backgroundColor: "black",
     paddingHorizontal: 20,
     paddingVertical: 5,
     borderRadius: 20,
     color: "#fff",
-    marginBottom: 18,
-  },
-  description: {
-    fontSize: 20,
-    fontWeight: 500,
-    marginBottom: 18,
-  },
-  temperature: {
-    fontSize: 140,
-    fontWeight: 400,
+    marginBottom: 24,
   },
   card: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    marginTop: 18,
-    backgroundColor: "#222",
+    width: 320,
+    paddingVertical: 30,
     borderRadius: 10,
-    paddingVertical: 8,
-    fontSize: 24,
-    color: "#fff",
-    width: 350,
-    height: 150,
+    backgroundColor: "#222",
   },
   cardItem: {
-    fontSize: 24,
-    // color: "#fff",
+    backgroundColor: "transparent",
+    alignItems: "center",
   },
 });

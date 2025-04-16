@@ -3,10 +3,16 @@
 ### Environment
 * node `20.19.0`
 * npx `10.8.2`
+* ReactNative UI Kitten `5.3.1`
 
 ### Libraries / data
-* [ReactNative UI Kitten](https://akveo.github.io/react-native-ui-kitten/)
 * [WMO weather interpretation code descriptions & images](https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c)
+
+
+### Design inspiration
+* [Dribble | Weather app by Desire Creative Agency](https://dribbble.com/shots/20675054-Mobile-Weather-app)
+* [Deep Dive: If We Designed a Mobile App for Weather](https://pointsnorthstudio.com/blog/deep-dive-if-we-designed-a-weather-app/)
+
 
 ### How to run
 ```
