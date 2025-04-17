@@ -135,9 +135,7 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: Colors.primary.default,
+    backgroundColor: "#ffffff80",
     paddingVertical: 10,
-    borderTopWidth: 1,
-    borderColor: "#ccc",
   },
 });

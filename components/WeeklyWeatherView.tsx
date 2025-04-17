@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   arrow: {
     backgroundColor: Colors.text.light,
     position: "absolute",
-    height: 2,
+    height: 1,
     borderRadius: 5,
   },
   arrowHorizontal: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     bottom: "40%",
   },
   arrowDiagonal: {
-    width: 16,
+    width: 15,
     bottom: "50%",
     right: 0,
     transform: [{ rotate: "45deg" }],

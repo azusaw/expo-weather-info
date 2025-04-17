@@ -4,6 +4,7 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
+import { LinearGradient } from "expo-linear-gradient";
 import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
@@ -13,7 +14,6 @@ import CurrentWeatherView from "@/components/CurrentWeatherView";
 import WeeklyWeatherView from "@/components/WeeklyWeatherView";
 import BouncingDots from "@/components/BouncingDots";
 import { useLocationStore } from "@/store/useLocationStore";
-import Colors from "@/constants/Colors";
 
 const { width } = Dimensions.get("window");
 
@@ -59,33 +59,52 @@ const Home = () => {
   }));
 
   return (
-    <View style={styles.container}>
-      {isLoading ? (
-        <BouncingDots />
-      ) : (
-        <Animated.View style={animatedStyle}>
-          {currentWeather && (
-            <CurrentWeatherView
-              siteName={location?.name}
-              data={currentWeather}
-            />
-          )}
-          {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
-        </Animated.View>
-      )}
-    </View>
+    <LinearGradient
+      colors={[
+        "rgb(131, 220, 169)",
+        "rgb(124, 191, 195)",
+        "rgb(117, 164, 221)",
+      ]}
+      start={{ x: 0.4, y: 0 }}
+      end={{ x: 0.4, y: 1 }}
+      style={styles.container}
+    >
+      <View style={styles.content}>
+        {isLoading ? (
+          <BouncingDots />
+        ) : (
+          <Animated.View style={animatedStyle}>
+            {currentWeather && (
+              <CurrentWeatherView
+                siteName={location?.name}
+                data={currentWeather}
+              />
+            )}
+            {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
+          </Animated.View>
+        )}
+      </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  content: {
+    flex: 1,
     maxWidth: width,
     overflowX: "hidden",
     overflowY: "scroll",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Colors.background,
+    // background: "#83DCA9",
+    // background:
+    //   "linear-gradient(180deg,rgba(131, 220, 169, 1) 0%, rgba(124, 191, 195, 1) 50%, rgba(117, 164, 221, 1) 100%)",
+    // backgroundColor: Colors.background,
     paddingBottom: 40, // for menu button
   },
 });

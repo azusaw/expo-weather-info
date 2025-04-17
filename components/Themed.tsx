@@ -45,7 +45,7 @@ export const Text = (props: TextProps) => {
     style,
     size = 24,
     weight = 400,
-    color = Colors.text.dark,
+    color = Colors.text.light,
     ...otherProps
   } = props;
   const fontFamily = getFontFamily(weight);
@@ -60,7 +60,6 @@ export const Text = (props: TextProps) => {
 
 export const View = (props: ViewProps) => {
   const { style, lightColor, darkColor, ...otherProps } = props;
-  const backgroundColor = "inherit";
 
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <DefaultView style={[style]} {...otherProps} />;
 };

@@ -22,7 +22,7 @@ const CurrentWeatherView = ({
   ];
   return (
     <View style={styles.container}>
-      <Text size={32} weight={900} style={styles.siteName}>
+      <Text size={36} weight={700} style={styles.siteName}>
         {siteName}
       </Text>
       <Text size={16} weight={300} style={styles.date}>
@@ -34,9 +34,7 @@ const CurrentWeatherView = ({
       <Text size={120} weight={400} style={styles.temperature}>
         {data.temperature}
         <View style={styles.unit}>
-          <View style={styles.outerCircle}>
-            <View style={styles.innerCircle} />
-          </View>
+          <View style={styles.unitCircle} />
         </View>
       </Text>
       <View style={styles.card}>
@@ -81,21 +79,15 @@ const styles = StyleSheet.create({
     top: 30,
     right: -30,
   },
-  outerCircle: {
+  unitCircle: {
     width: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: Colors.text.dark,
+    backgroundColor: "transparent",
     borderWidth: 4,
-    borderColor: Colors.text.dark,
+    borderColor: Colors.text.light,
     justifyContent: "center",
     alignItems: "center",
-  },
-  innerCircle: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: Colors.background,
   },
   card: {
     display: "flex",
@@ -109,7 +101,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary.dark,
   },
   cardItem: {
-    backgroundColor: "transparent",
     alignItems: "center",
   },
 });

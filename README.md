@@ -20,10 +20,11 @@
 # Retrieve city location data and store them into a static file
 npm run prebuild
 
-# Run server
+# Run server - either of below
+npm run start 
 npx expo start
 
-# Run test
+# Run test - it will generate test coverage into ./coverage  
 npm test
 ```
 

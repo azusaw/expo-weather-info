@@ -4,7 +4,6 @@ import { DailyWeather } from "@/types";
 import { Text, View } from "@/components/Themed";
 import WeatherImage from "@/components/WeatherImage";
 import dayjs from "dayjs";
-import Colors from "@/constants/Colors";
 
 const DailyWeatherCard = ({
   time,
@@ -28,7 +27,7 @@ const DailyWeatherCard = ({
 const styles = StyleSheet.create({
   card: {
     alignItems: "center",
-    backgroundColor: Colors.primary.default,
+    backgroundColor: "#ffffff30",
     marginHorizontal: 10,
     padding: 20,
     borderRadius: 10,

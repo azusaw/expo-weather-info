@@ -27,7 +27,9 @@ const CityList = React.memo(({ onChange }: { onChange: () => void }) => {
                   : styles.menuItem
               }
             >
-              <Text size={18}>{name}</Text>
+              <Text size={18} color={Colors.text.dark}>
+                {name}
+              </Text>
             </View>
             {index < CityLocations.length - 1 && <View style={styles.border} />}
           </TouchableOpacity>
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
   activeItem: {
     padding: 15,
     backgroundColor: Colors.secondary.light,
-    borderLeftWidth: 6,
+    borderLeftWidth: 8,
     borderLeftColor: Colors.secondary.default,
   },
   border: {
