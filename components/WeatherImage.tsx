@@ -1,19 +1,18 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, ViewStyle } from "react-native";
 import { Image } from "expo-image";
 import { View, Text } from "@/components/Themed";
 import { getWeatherDetailFromCode } from "@/libs/getWeatherDetailFromCode";
-import { getIsSmallScreen } from "@/libs/getIsSmallScreen";
-
-const isSmall = getIsSmallScreen();
+import { useScreenSizeContext } from "@/components/ScreenSizeProvider";
 
 const WeatherImage = ({ weatherCode }: { weatherCode: number }) => {
+  const { isSmall } = useScreenSizeContext();
   const weatherDetail = getWeatherDetailFromCode(weatherCode);
   return (
     weatherDetail && (
       <View style={styles.container}>
         <Image
-          style={styles.image}
+          style={isSmall ? styles.imageSmall : styles.image}
           source={weatherDetail.image}
           contentFit="cover"
           transition={1000}
@@ -31,8 +30,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    height: isSmall ? 50 : 70,
-    width: isSmall ? 60 : 80,
+    height: 70,
+    width: 80,
+  },
+  imageSmall: {
+    height: 50,
+    width: 60,
   },
 });
 

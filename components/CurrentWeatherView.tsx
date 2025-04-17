@@ -1,15 +1,13 @@
 import React from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/en";
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { getWeatherDetailFromCode } from "@/libs/getWeatherDetailFromCode";
-import { getIsSmallScreen } from "@/libs/getIsSmallScreen";
 import { CurrentWeather } from "@/types";
 import Icon, { IconType } from "@/components/SvgIcon";
 import Colors from "@/constants/Colors";
-
-const isSmall = getIsSmallScreen();
+import { useScreenSizeContext } from "@/components/ScreenSizeProvider";
 
 const CurrentWeatherView = ({
   data,
@@ -18,6 +16,7 @@ const CurrentWeatherView = ({
   data: CurrentWeather;
   siteName?: string;
 }) => {
+  const { isSmall } = useScreenSizeContext();
   const infoItems: { label: string; icon: IconType; data: string }[] = [
     { label: "Rain", icon: IconType.Rain, data: `${data.rain}mm` },
     { label: "Wind", icon: IconType.Wind, data: `${data.windSpeed}km/h` },
@@ -34,13 +33,15 @@ const CurrentWeatherView = ({
       <Text size={isSmall ? 20 : 24} weight={300}>
         {getWeatherDetailFromCode(data.weatherCode).description}
       </Text>
-      <Text size={isSmall ? 80 : 120} weight={400} style={styles.temperature}>
+      <Text size={isSmall ? 80 : 100} weight={400} style={styles.temperature}>
         {data.temperature}
-        <View style={styles.unit}>
-          <View style={styles.unitCircle} />
+        <View style={[styles.unit, isSmall && styles.unitSmall]}>
+          <View
+            style={[styles.unitCircle, isSmall && styles.unitCircleSmall]}
+          />
         </View>
       </Text>
-      <View style={styles.card}>
+      <View style={[styles.card, isSmall && styles.cardSmall]}>
         {infoItems.map(({ label, icon, data }) => (
           <View key={label} style={styles.cardItem}>
             <Icon
@@ -82,29 +83,43 @@ const styles = StyleSheet.create({
   },
   unit: {
     position: "absolute",
-    top: isSmall ? 20 : 30,
-    right: isSmall ? -20 : -30,
+    top: 30,
+    right: -30,
+  },
+  unitSmall: {
+    position: "absolute",
+    top: 20,
+    right: -20,
   },
   unitCircle: {
-    width: isSmall ? 15 : 20,
-    height: isSmall ? 15 : 20,
     borderRadius: 10,
     backgroundColor: "transparent",
-    borderWidth: isSmall ? 3 : 4,
     borderColor: Colors.text.light,
     justifyContent: "center",
     alignItems: "center",
+    width: 20,
+    height: 20,
+    borderWidth: 4,
+  },
+  unitCircleSmall: {
+    width: 15,
+    height: 15,
+    borderWidth: 4,
   },
   card: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    paddingVertical: isSmall ? 5 : 15,
-    paddingHorizontal: isSmall ? 15 : 20,
-    marginTop: isSmall ? 8 : 18,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 8,
     borderRadius: 10,
     backgroundColor: Colors.primary.dark,
+  },
+  cardSmall: {
+    paddingVertical: 5,
+    paddingHorizontal: 15,
   },
   cardItem: {
     alignItems: "center",

@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     position: "relative",
     marginHorizontal: "auto",
     width: "100%",
-    maxWidth: 400,
   },
   menuBox: {
     position: "absolute",
@@ -53,7 +52,6 @@ const styles = StyleSheet.create({
     width: 220,
     borderRadius: 5,
     backgroundColor: "#fff",
-    overflow: "hidden",
   },
   menuItem: {
     padding: 15,

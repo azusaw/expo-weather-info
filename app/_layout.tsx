@@ -4,6 +4,7 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
+import { SafeAreaView } from "react-native-safe-area-context";
 import * as SplashScreen from "expo-splash-screen";
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
@@ -25,7 +26,7 @@ import CityList from "@/components/CityList";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import Colors from "@/constants/Colors";
 import { useLocationStore } from "@/store/useLocationStore";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ScreenSizeProvider } from "@/components/ScreenSizeProvider";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -66,30 +67,43 @@ export default function RootLayout() {
   return loaded ? <RootLayoutNav /> : null;
 }
 
+enum TAB_ITEM {
+  LOCATION = "location",
+  CITY = "city",
+}
+
+enum TAB_ICON {
+  MAP = "map-marker",
+  SEARCH = "search",
+}
+
 const RootLayoutNav = () => {
   const { setLocation } = useLocationStore();
+  const [activeTab, setActiveTab] = useState<TAB_ITEM>();
   const [isShowCityList, setIsShowCityList] = useState(false);
 
   const toggleCityList = () => setIsShowCityList(!isShowCityList);
 
-  const setCurrentLocation = async () => {
+  const onPressLocationTab = async () => {
+    setActiveTab(TAB_ITEM.LOCATION);
     await getCurrentCoords().then((data) =>
       setLocation({ name: "Your Location", coords: data }),
     );
     isShowCityList && toggleCityList();
   };
 
+  const onPressCityTab = async () => {
+    // set undefined for making it inactive if user clicks city tab for closing select popup
+    setActiveTab(isShowCityList ? undefined : TAB_ITEM.CITY);
+    toggleCityList();
+  };
+
   const TabBarIcon = (props: {
     name: React.ComponentProps<typeof FontAwesome>["name"];
-  }) => (
-    <FontAwesome
-      size={28}
-      style={{ marginBottom: -3, color: Colors.primary.dark }}
-      {...props}
-    />
-  );
+    color: string;
+  }) => <FontAwesome size={28} {...props} />;
 
-  const animatedStyle = useAnimatedStyle(() => ({
+  const cityListAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
       {
         translateY: withSpring(isShowCityList ? 0 : -20, {
@@ -102,26 +116,41 @@ const RootLayoutNav = () => {
     pointerEvents: isShowCityList ? "auto" : "none",
   }));
 
+  const tabs: {
+    key: string;
+    icon: TAB_ICON;
+    onPress: () => void;
+  }[] = [
+    { key: TAB_ITEM.LOCATION, icon: TAB_ICON.MAP, onPress: onPressLocationTab },
+    { key: TAB_ITEM.CITY, icon: TAB_ICON.SEARCH, onPress: onPressCityTab },
+  ];
+
   return (
-    <>
+    <ScreenSizeProvider>
       <Toast />
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
       </Stack>
-      <Animated.View style={animatedStyle}>
+      <Animated.View style={cityListAnimatedStyle}>
         <CityList onChange={toggleCityList} />
       </Animated.View>
       <SafeAreaView edges={["bottom"]} style={styles.bottomBarContainer}>
         <View style={styles.bottomBar}>
-          <Pressable onPress={setCurrentLocation}>
-            <TabBarIcon name="map-marker" />
-          </Pressable>
-          <Pressable onPress={toggleCityList}>
-            <TabBarIcon name="search" />
-          </Pressable>
+          {tabs.map(({ key, icon, onPress }) => (
+            <Pressable onPress={onPress}>
+              <TabBarIcon
+                name={icon}
+                color={
+                  activeTab === key
+                    ? Colors.secondary.default
+                    : Colors.primary.dark
+                }
+              />
+            </Pressable>
+          ))}
         </View>
       </SafeAreaView>
-    </>
+    </ScreenSizeProvider>
   );
 };
 
@@ -137,5 +166,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     backgroundColor: "#ffffff50",
     paddingVertical: 10,
+  },
+  tabItem: {
+    color: Colors.primary.default,
+  },
+  activeTabItem: {
+    color: Colors.secondary.default,
   },
 });

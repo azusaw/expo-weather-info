@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,
   withSpring,
@@ -13,11 +13,11 @@ import CurrentWeatherView from "@/components/CurrentWeatherView";
 import WeeklyWeatherView from "@/components/WeeklyWeatherView";
 import BouncingDots from "@/components/BouncingDots";
 import { useLocationStore } from "@/store/useLocationStore";
-import { getIsSmallScreen } from "@/libs/getIsSmallScreen";
-
-const isSmall = getIsSmallScreen();
+import { View } from "@/components/Themed";
+import { useScreenSizeContext } from "@/components/ScreenSizeProvider";
 
 const Home = () => {
+  const { width, isSmall } = useScreenSizeContext();
   const location = useLocationStore((state) => state.location);
   const { setLocation } = useLocationStore();
   const [isLoading, setIsLoading] = useState(true);
@@ -69,21 +69,31 @@ const Home = () => {
       end={{ x: 0.4, y: 1 }}
       style={styles.container}
     >
-      <ScrollView contentContainerStyle={styles.content}>
+      <>
         {isLoading ? (
-          <BouncingDots />
+          <View style={styles.content}>
+            <BouncingDots />
+          </View>
         ) : (
-          <Animated.View style={animatedStyle}>
-            {currentWeather && (
-              <CurrentWeatherView
-                siteName={location?.name}
-                data={currentWeather}
-              />
-            )}
-            {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
-          </Animated.View>
+          <ScrollView
+            contentContainerStyle={[
+              styles.content,
+              isSmall && styles.contentSmall,
+              { maxWidth: width },
+            ]}
+          >
+            <Animated.View style={animatedStyle}>
+              {currentWeather && (
+                <CurrentWeatherView
+                  siteName={location?.name}
+                  data={currentWeather}
+                />
+              )}
+              {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
+            </Animated.View>
+          </ScrollView>
         )}
-      </ScrollView>
+      </>
     </LinearGradient>
   );
 };
@@ -97,8 +107,10 @@ const styles = StyleSheet.create({
   content: {
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: isSmall ? 20 : 40,
-    paddingBottom: 40, // for menu button
+    padding: 40, // for menu button
+  },
+  contentSmall: {
+    paddingTop: 20,
   },
 });
 export default Home;
