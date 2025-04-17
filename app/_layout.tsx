@@ -25,6 +25,7 @@ import CityList from "@/components/CityList";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import Colors from "@/constants/Colors";
 import { useLocationStore } from "@/store/useLocationStore";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -110,7 +111,7 @@ const RootLayoutNav = () => {
       <Animated.View style={animatedStyle}>
         <CityList onChange={toggleCityList} />
       </Animated.View>
-      <View style={styles.bottomBarContainer}>
+      <SafeAreaView edges={["bottom"]} style={styles.bottomBarContainer}>
         <View style={styles.bottomBar}>
           <Pressable onPress={setCurrentLocation}>
             <TabBarIcon name="map-marker" />
@@ -119,7 +120,7 @@ const RootLayoutNav = () => {
             <TabBarIcon name="search" />
           </Pressable>
         </View>
-      </View>
+      </SafeAreaView>
     </>
   );
 };
@@ -129,13 +130,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   bottomBar: {
-    position: "fixed",
+    position: "absolute",
     bottom: 0,
     width: "100%",
-    maxWidth: 400,
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: "#ffffff80",
+    backgroundColor: "#ffffff50",
     paddingVertical: 10,
   },
 });

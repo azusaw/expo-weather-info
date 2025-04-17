@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, ScrollView, StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,
   withSpring,
@@ -9,13 +9,13 @@ import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
 import { Coords, CurrentWeather, DailyWeather } from "@/types";
-import { View } from "@/components/Themed";
 import CurrentWeatherView from "@/components/CurrentWeatherView";
 import WeeklyWeatherView from "@/components/WeeklyWeatherView";
 import BouncingDots from "@/components/BouncingDots";
 import { useLocationStore } from "@/store/useLocationStore";
+import { getIsSmallScreen } from "@/libs/getIsSmallScreen";
 
-const { width } = Dimensions.get("window");
+const isSmall = getIsSmallScreen();
 
 const Home = () => {
   const location = useLocationStore((state) => state.location);
@@ -69,7 +69,7 @@ const Home = () => {
       end={{ x: 0.4, y: 1 }}
       style={styles.container}
     >
-      <View style={styles.content}>
+      <ScrollView contentContainerStyle={styles.content}>
         {isLoading ? (
           <BouncingDots />
         ) : (
@@ -83,7 +83,7 @@ const Home = () => {
             {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
           </Animated.View>
         )}
-      </View>
+      </ScrollView>
     </LinearGradient>
   );
 };
@@ -95,16 +95,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   content: {
-    flex: 1,
-    maxWidth: width,
-    overflowX: "hidden",
-    overflowY: "scroll",
     alignItems: "center",
     justifyContent: "center",
-    // background: "#83DCA9",
-    // background:
-    //   "linear-gradient(180deg,rgba(131, 220, 169, 1) 0%, rgba(124, 191, 195, 1) 50%, rgba(117, 164, 221, 1) 100%)",
-    // backgroundColor: Colors.background,
+    paddingTop: isSmall ? 20 : 40,
     paddingBottom: 40, // for menu button
   },
 });

@@ -4,6 +4,9 @@ import { DailyWeather } from "@/types";
 import { Text, View } from "@/components/Themed";
 import WeatherImage from "@/components/WeatherImage";
 import dayjs from "dayjs";
+import { getIsSmallScreen } from "@/libs/getIsSmallScreen";
+
+const isSmall = getIsSmallScreen();
 
 const DailyWeatherCard = ({
   time,
@@ -12,7 +15,7 @@ const DailyWeatherCard = ({
   temperatureMax,
 }: DailyWeather) => (
   <View style={styles.card}>
-    <Text size={22}>{dayjs(time).format("DD ddd")}</Text>
+    <Text size={isSmall ? 16 : 22}>{dayjs(time).format("DD ddd")}</Text>
     <WeatherImage weatherCode={weatherCode} />
     <Text size={16} weight={500} style={{ marginTop: 10 }}>
       {temperatureMin}
@@ -29,9 +32,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#ffffff30",
     marginHorizontal: 10,
-    padding: 20,
+    padding: isSmall ? 10 : 20,
     borderRadius: 10,
-    maxHeight: 180,
+    maxHeight: isSmall ? 140 : 180,
   },
 });
 

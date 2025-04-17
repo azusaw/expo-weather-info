@@ -1,12 +1,15 @@
 import React from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/en";
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { getWeatherDetailFromCode } from "@/libs/getWeatherDetailFromCode";
+import { getIsSmallScreen } from "@/libs/getIsSmallScreen";
 import { CurrentWeather } from "@/types";
 import Icon, { IconType } from "@/components/SvgIcon";
 import Colors from "@/constants/Colors";
+
+const isSmall = getIsSmallScreen();
 
 const CurrentWeatherView = ({
   data,
@@ -22,16 +25,16 @@ const CurrentWeatherView = ({
   ];
   return (
     <View style={styles.container}>
-      <Text size={36} weight={700} style={styles.siteName}>
+      <Text size={isSmall ? 32 : 36} weight={700} style={styles.siteName}>
         {siteName}
       </Text>
-      <Text size={16} weight={300} style={styles.date}>
+      <Text size={isSmall ? 14 : 16} weight={300} style={styles.date}>
         {dayjs(data.time).format("DD MMM ddd, hh A")}
       </Text>
-      <Text size={24} weight={300}>
+      <Text size={isSmall ? 20 : 24} weight={300}>
         {getWeatherDetailFromCode(data.weatherCode).description}
       </Text>
-      <Text size={120} weight={400} style={styles.temperature}>
+      <Text size={isSmall ? 80 : 120} weight={400} style={styles.temperature}>
         {data.temperature}
         <View style={styles.unit}>
           <View style={styles.unitCircle} />
@@ -40,11 +43,15 @@ const CurrentWeatherView = ({
       <View style={styles.card}>
         {infoItems.map(({ label, icon, data }) => (
           <View key={label} style={styles.cardItem}>
-            <Icon name={icon} size={40} color={Colors.primary.default} />
-            <Text size={18} style={{ marginTop: 20 }}>
+            <Icon
+              name={icon}
+              size={isSmall ? 30 : 40}
+              color={Colors.primary.default}
+            />
+            <Text size={isSmall ? 14 : 18} style={{ marginTop: 20 }}>
               {data}
             </Text>
-            <Text size={14} style={{ marginTop: 10 }}>
+            <Text size={isSmall ? 10 : 14} style={{ marginTop: 10 }}>
               {label}
             </Text>
           </View>
@@ -57,7 +64,6 @@ const CurrentWeatherView = ({
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    minWidth: 400,
     backgroundColor: "inherit",
   },
   siteName: {
@@ -76,15 +82,15 @@ const styles = StyleSheet.create({
   },
   unit: {
     position: "absolute",
-    top: 30,
-    right: -30,
+    top: isSmall ? 20 : 30,
+    right: isSmall ? -20 : -30,
   },
   unitCircle: {
-    width: 20,
-    height: 20,
+    width: isSmall ? 15 : 20,
+    height: isSmall ? 15 : 20,
     borderRadius: 10,
     backgroundColor: "transparent",
-    borderWidth: 4,
+    borderWidth: isSmall ? 3 : 4,
     borderColor: Colors.text.light,
     justifyContent: "center",
     alignItems: "center",
@@ -94,14 +100,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    width: 320,
-    paddingVertical: 30,
-    marginTop: 18,
+    paddingVertical: isSmall ? 5 : 15,
+    paddingHorizontal: isSmall ? 15 : 20,
+    marginTop: isSmall ? 8 : 18,
     borderRadius: 10,
     backgroundColor: Colors.primary.dark,
   },
   cardItem: {
     alignItems: "center",
+    padding: 15,
   },
 });
 

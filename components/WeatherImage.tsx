@@ -3,6 +3,9 @@ import { StyleSheet } from "react-native";
 import { Image } from "expo-image";
 import { View, Text } from "@/components/Themed";
 import { getWeatherDetailFromCode } from "@/libs/getWeatherDetailFromCode";
+import { getIsSmallScreen } from "@/libs/getIsSmallScreen";
+
+const isSmall = getIsSmallScreen();
 
 const WeatherImage = ({ weatherCode }: { weatherCode: number }) => {
   const weatherDetail = getWeatherDetailFromCode(weatherCode);
@@ -28,8 +31,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    height: 70,
-    width: 80,
+    height: isSmall ? 50 : 70,
+    width: isSmall ? 60 : 80,
   },
 });
 

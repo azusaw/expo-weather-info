@@ -4,8 +4,10 @@ import { Text, View } from "@/components/Themed";
 import DailyWeatherCard from "@/components/DailyWeatherCard";
 import { DailyWeather } from "@/types";
 import Colors from "@/constants/Colors";
+import { getIsSmallScreen } from "@/libs/getIsSmallScreen";
 
 const { width } = Dimensions.get("window");
+const isSmall = getIsSmallScreen();
 
 const WeeklyWeatherView = ({ data }: { data: DailyWeather[] }) => (
   <View style={styles.weeklyWeather}>
@@ -22,18 +24,20 @@ const WeeklyWeatherView = ({ data }: { data: DailyWeather[] }) => (
       horizontal
       data={data}
       renderItem={({ item }) => <DailyWeatherCard {...item} />}
+      style={{ height: isSmall ? 140 : 200 }}
       keyExtractor={(item) => item.time}
-      contentContainerStyle={{ paddingHorizontal: 10 }}
+      contentContainerStyle={{ paddingHorizontal: 10, height: "100%" }}
     />
   </View>
 );
 
 const styles = StyleSheet.create({
   weeklyWeather: {
+    height: isSmall ? 230 : 280,
     maxWidth: width,
   },
   title: {
-    marginTop: 20,
+    marginTop: isSmall ? 10 : 20,
     marginBottom: 10,
     paddingHorizontal: 20,
     flexDirection: "row",
