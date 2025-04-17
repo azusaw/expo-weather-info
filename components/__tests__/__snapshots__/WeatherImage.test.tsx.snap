@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherImage it renders WeatherImage successfully 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "inherit",
+      },
+      {
+        "alignItems": "center",
+      },
+    ]
+  }
+>
+  <ViewManagerAdapter_ExpoImage
+    containerViewRef={"[React.ref]"}
+    contentFit="cover"
+    contentPosition={
+      {
+        "left": "50%",
+        "top": "50%",
+      }
+    }
+    height={70}
+    nativeViewRef={"[React.ref]"}
+    onError={[Function]}
+    onLoad={[Function]}
+    onLoadStart={[Function]}
+    onProgress={[Function]}
+    placeholder={[]}
+    source={
+      [
+        {
+          "uri": "http://openweathermap.org/img/wn/01d@2x.png",
+        },
+      ]
+    }
+    style={
+      {
+        "height": 70,
+        "width": 80,
+      }
+    }
+    transition={
+      {
+        "duration": 1000,
+      }
+    }
+    width={80}
+  />
+  <Text
+    style={
+      [
+        {
+          "color": "#888",
+          "fontFamily": "Montserrat_300Light",
+          "fontSize": 14,
+        },
+        undefined,
+      ]
+    }
+  >
+    Mainly Sunny
+  </Text>
+</View>
+`;

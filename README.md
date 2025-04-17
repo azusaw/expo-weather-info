@@ -22,6 +22,9 @@ npm run prebuild
 
 # Run server
 npx expo start
+
+# Run test
+npm test
 ```
 
 ### Requirements

@@ -5,9 +5,8 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { getWeatherDetailFromCode } from "@/libs/getWeatherDetailFromCode";
 import { CurrentWeather } from "@/types";
-import Icon, { IconType } from "@/components/Icon";
+import Icon, { IconType } from "@/components/SvgIcon";
 import Colors from "@/constants/Colors";
-import SvgIcon from "@/components/Icon";
 
 const CurrentWeatherView = ({
   data,
@@ -23,7 +22,7 @@ const CurrentWeatherView = ({
   ];
   return (
     <View style={styles.container}>
-      <Text size={28} weight={600} style={styles.siteName}>
+      <Text size={32} weight={900} style={styles.siteName}>
         {siteName}
       </Text>
       <Text size={16} weight={300} style={styles.date}>
@@ -42,7 +41,7 @@ const CurrentWeatherView = ({
       </Text>
       <View style={styles.card}>
         {infoItems.map(({ label, icon, data }) => (
-          <View style={styles.cardItem}>
+          <View key={label} style={styles.cardItem}>
             <Icon name={icon} size={40} color={Colors.primary.default} />
             <Text size={18} style={{ marginTop: 20 }}>
               {data}

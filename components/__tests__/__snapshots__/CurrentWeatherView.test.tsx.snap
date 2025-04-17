@@ -1,0 +1,467 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "inherit",
+      },
+      {
+        "alignItems": "center",
+        "backgroundColor": "inherit",
+        "minWidth": 400,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#888",
+          "fontFamily": "Montserrat_900Black",
+          "fontSize": 32,
+        },
+        {
+          "marginBottom": 20,
+        },
+      ]
+    }
+  >
+    Tokyo
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#888",
+          "fontFamily": "Montserrat_300Light",
+          "fontSize": 16,
+        },
+        {
+          "backgroundColor": "#222",
+          "borderRadius": 20,
+          "color": "#fff",
+          "marginBottom": 24,
+          "paddingHorizontal": 20,
+          "paddingVertical": 5,
+        },
+      ]
+    }
+  >
+    16 Apr Wed, 11 PM
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#888",
+          "fontFamily": "Montserrat_300Light",
+          "fontSize": 24,
+        },
+        undefined,
+      ]
+    }
+  >
+    Mainly Sunny
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#888",
+          "fontFamily": "Montserrat_400Regular",
+          "fontSize": 120,
+        },
+        {
+          "position": "relative",
+        },
+      ]
+    }
+  >
+    18.1
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "inherit",
+          },
+          {
+            "position": "absolute",
+            "right": -30,
+            "top": 30,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "inherit",
+            },
+            {
+              "alignItems": "center",
+              "backgroundColor": "#888",
+              "borderColor": "#888",
+              "borderRadius": 10,
+              "borderWidth": 4,
+              "height": 20,
+              "justifyContent": "center",
+              "width": 20,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "inherit",
+              },
+              {
+                "backgroundColor": "#4a4b4c",
+                "borderRadius": 5,
+                "height": 10,
+                "width": 10,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </Text>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "inherit",
+        },
+        {
+          "alignItems": "center",
+          "backgroundColor": "#222",
+          "borderRadius": 10,
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-evenly",
+          "marginTop": 18,
+          "paddingVertical": 30,
+          "width": 320,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "inherit",
+          },
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight={40}
+        bbWidth={40}
+        fill="#ddd"
+        focusable={false}
+        height={40}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "flex": 0,
+              "height": 40,
+              "width": 40,
+            },
+          ]
+        }
+        vbHeight={570}
+        vbWidth={570}
+        width={40}
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4292730333,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        >
+          <RNSVGPath
+            d="M288 0c17.7 0 32 14.3 32 32v17.7C451.8 63.4 557.7 161 573.9 285.9c2 15.6-17.3 24.4-27.8 12.7-14-15.6-41.3-26.6-66.1-26.6-38.7 0-71 27.5-78.4 64.1-1.7 8.7-8.7 15.9-17.6 15.9s-15.8-7.2-17.6-15.9C359 299.5 326.7 272 288 272s-71 27.5-78.4 64.1c-1.7 8.7-8.7 15.9-17.6 15.9s-15.8-7.2-17.6-15.9C167 299.5 134.7 272 96 272c-24.8 0-52.1 11-66.1 26.7-10.5 11.7-29.8 2.8-27.8-12.8C18.3 161 124.2 63.4 256 49.7V32c0-17.7 14.3-32 32-32m0 304c12.3 0 23.5 4.6 32 12.2v114.3c0 45-36.5 81.4-81.4 81.4-30.8 0-59-17.4-72.8-45l-2.3-4.7c-7.9-15.8-1.5-35 14.3-42.9s35-1.5 42.9 14.3l2.3 4.7c3 5.9 9 9.6 15.6 9.6 9.6 0 17.4-7.8 17.4-17.4V316.2c8.5-7.6 19.7-12.2 32-12.2"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <Text
+        style={
+          [
+            {
+              "color": "#888",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 18,
+            },
+            {
+              "marginTop": 20,
+            },
+          ]
+        }
+      >
+        0mm
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#888",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 14,
+            },
+            {
+              "marginTop": 10,
+            },
+          ]
+        }
+      >
+        Rain
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "inherit",
+          },
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight={40}
+        bbWidth={40}
+        fill="#ddd"
+        focusable={false}
+        height={40}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "flex": 0,
+              "height": 40,
+              "width": 40,
+            },
+          ]
+        }
+        vbHeight={570}
+        vbWidth={570}
+        width={40}
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4292730333,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        >
+          <RNSVGPath
+            d="M288 32c0 17.7 14.3 32 32 32h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h320c53 0 96-43 96-96S405 0 352 0h-32c-17.7 0-32 14.3-32 32m64 352c0 17.7 14.3 32 32 32h32c53 0 96-43 96-96s-43-96-96-96H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32h-32c-17.7 0-32 14.3-32 32M128 512h32c53 0 96-43 96-96s-43-96-96-96H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h128c17.7 0 32 14.3 32 32s-14.3 32-32 32h-32c-17.7 0-32 14.3-32 32s14.3 32 32 32"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <Text
+        style={
+          [
+            {
+              "color": "#888",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 18,
+            },
+            {
+              "marginTop": 20,
+            },
+          ]
+        }
+      >
+        10.5km/h
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#888",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 14,
+            },
+            {
+              "marginTop": 10,
+            },
+          ]
+        }
+      >
+        Wind
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "inherit",
+          },
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight={40}
+        bbWidth={40}
+        fill="#ddd"
+        focusable={false}
+        height={40}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "flex": 0,
+              "height": 40,
+              "width": 40,
+            },
+          ]
+        }
+        vbHeight={570}
+        vbWidth={570}
+        width={40}
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4292730333,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            matrix={
+              [
+                1,
+                0,
+                0,
+                1,
+                93,
+                29,
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M192 512C86 512 0 426 0 320 0 228.8 130.2 57.7 166.6 11.7c6-7.5 14.9-11.7 24.5-11.7h1.8c9.6 0 18.5 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192M96 336c0-8.8-7.2-16-16-16s-16 7.2-16 16c0 61.9 50.1 112 112 112 8.8 0 16-7.2 16-16s-7.2-16-16-16c-44.2 0-80-35.8-80-80"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <Text
+        style={
+          [
+            {
+              "color": "#888",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 18,
+            },
+            {
+              "marginTop": 20,
+            },
+          ]
+        }
+      >
+        58%
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#888",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 14,
+            },
+            {
+              "marginTop": 10,
+            },
+          ]
+        }
+      >
+        Humidity
+      </Text>
+    </View>
+  </View>
+</View>
+`;

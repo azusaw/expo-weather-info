@@ -5,4 +5,4 @@ export const getWeatherDetailFromCode = (
   weatherCode: number,
 ): WeatherCodeDetail =>
   // @ts-ignore use only day information for now
-  WeatherCodeDesc[`${weatherCode}`].day;
+  WeatherCodeDesc[`${weatherCode}`]?.day;

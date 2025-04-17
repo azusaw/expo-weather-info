@@ -23,14 +23,19 @@ const getIconPath = (name: IconType) => {
     case IconType.Wind:
       return IconPaths.wind;
     default:
-      return <></>;
+      return null;
   }
 };
 
-const SvgIcon = ({ name, size = 100, color = "#888" }: IconProps) => (
-  <Svg viewBox="0 0 570 570" width={size} height={size} fill={color}>
-    {getIconPath(name)}
-  </Svg>
-);
+const SvgIcon = ({ name, size = 100, color = "#888" }: IconProps) => {
+  const path = getIconPath(name);
+  return (
+    path && (
+      <Svg viewBox="0 0 570 570" width={size} height={size} fill={color}>
+        {path}
+      </Svg>
+    )
+  );
+};
 
 export default SvgIcon;

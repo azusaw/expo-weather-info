@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BouncingDots it renders BouncingDots successfully 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "#ffa7c5",
+        "borderRadius": 5,
+        "height": 20,
+        "marginHorizontal": 5,
+        "transform": [
+          {
+            "translateY": 0,
+          },
+        ],
+        "width": 20,
+      }
+    }
+  />
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "#f33b7b",
+        "borderRadius": 5,
+        "height": 20,
+        "marginHorizontal": 5,
+        "transform": [
+          {
+            "translateY": 0,
+          },
+        ],
+        "width": 20,
+      }
+    }
+  />
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "#e41965",
+        "borderRadius": 5,
+        "height": 20,
+        "marginHorizontal": 5,
+        "transform": [
+          {
+            "translateY": 0,
+          },
+        ],
+        "width": 20,
+      }
+    }
+  />
+</View>
+`;

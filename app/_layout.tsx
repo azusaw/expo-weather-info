@@ -108,7 +108,7 @@ const RootLayoutNav = () => {
         <Stack.Screen name="index" options={{ headerShown: false }} />
       </Stack>
       <Animated.View style={animatedStyle}>
-        <CityList onClose={toggleCityList} />
+        <CityList onChange={toggleCityList} />
       </Animated.View>
       <View style={styles.bottomBarContainer}>
         <View style={styles.bottomBar}>

@@ -5,14 +5,14 @@ import Colors from "@/constants/Colors";
 import { Text, View } from "./Themed";
 import { useLocationStore } from "@/store/useLocationStore";
 
-const CityList = React.memo(({ onClose }: { onClose: () => void }) => {
+const CityList = React.memo(({ onChange }: { onChange: () => void }) => {
   const { setLocation } = useLocationStore();
   const [selectedCityIndex, setSelectedCityIndex] = useState<number>();
 
   const onSelect = async (index: number) => {
     setSelectedCityIndex(index); // for showing active color
     await setLocation(CityLocations[index]);
-    onClose();
+    onChange();
   };
 
   return (

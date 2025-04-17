@@ -1,0 +1,459 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "inherit",
+      },
+      {
+        "maxWidth": 750,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "inherit",
+        },
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginBottom": 10,
+          "marginTop": 20,
+          "paddingHorizontal": 20,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#ccc",
+            "fontFamily": "Montserrat_300Light",
+            "fontSize": 20,
+          },
+          undefined,
+        ]
+      }
+    >
+      Weekly forecast
+    </Text>
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "inherit",
+          },
+          {
+            "backgroundColor": "transparent",
+            "height": 50,
+            "position": "relative",
+            "right": 0,
+            "width": 60,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "inherit",
+            },
+            [
+              {
+                "backgroundColor": "#ccc",
+                "borderRadius": 5,
+                "height": 2,
+                "position": "absolute",
+              },
+              {
+                "bottom": "40%",
+                "width": 58,
+              },
+            ],
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "inherit",
+            },
+            [
+              {
+                "backgroundColor": "#ccc",
+                "borderRadius": 5,
+                "height": 2,
+                "position": "absolute",
+              },
+              {
+                "bottom": "50%",
+                "right": 0,
+                "transform": [
+                  {
+                    "rotate": "45deg",
+                  },
+                ],
+                "width": 16,
+              },
+            ],
+          ]
+        }
+      />
+    </View>
+  </View>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "paddingHorizontal": 10,
+      }
+    }
+    data={
+      [
+        {
+          "temperatureMax": 19.6,
+          "temperatureMin": 12.5,
+          "time": "2025-04-16T23:45",
+          "weatherCode": 2,
+        },
+        {
+          "temperatureMax": 16.6,
+          "temperatureMin": 14.5,
+          "time": "2025-04-17T23:45",
+          "weatherCode": 7,
+        },
+        {
+          "temperatureMax": 16.8,
+          "temperatureMin": 10.5,
+          "time": "2025-04-18T23:45",
+          "weatherCode": 23,
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={true}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={0.0001}
+    stickyHeaderIndices={[]}
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "inherit",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ddd",
+                "borderRadius": 10,
+                "marginHorizontal": 10,
+                "maxHeight": 180,
+                "padding": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#888",
+                  "fontFamily": "Montserrat_400Regular",
+                  "fontSize": 22,
+                },
+                undefined,
+              ]
+            }
+          >
+            16 Wed
+          </Text>
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "inherit",
+                },
+                {
+                  "alignItems": "center",
+                },
+              ]
+            }
+          >
+            <ViewManagerAdapter_ExpoImage
+              containerViewRef={"[React.ref]"}
+              contentFit="cover"
+              contentPosition={
+                {
+                  "left": "50%",
+                  "top": "50%",
+                }
+              }
+              height={70}
+              nativeViewRef={"[React.ref]"}
+              onError={[Function]}
+              onLoad={[Function]}
+              onLoadStart={[Function]}
+              onProgress={[Function]}
+              placeholder={[]}
+              source={
+                [
+                  {
+                    "uri": "http://openweathermap.org/img/wn/02d@2x.png",
+                  },
+                ]
+              }
+              style={
+                {
+                  "height": 70,
+                  "width": 80,
+                }
+              }
+              transition={
+                {
+                  "duration": 1000,
+                }
+              }
+              width={80}
+            />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#888",
+                    "fontFamily": "Montserrat_300Light",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Partly Cloudy
+            </Text>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#888",
+                  "fontFamily": "Montserrat_500Medium",
+                  "fontSize": 16,
+                },
+                {
+                  "marginTop": 10,
+                },
+              ]
+            }
+          >
+            12.5
+            <Text
+              style={
+                [
+                  {
+                    "color": "#888",
+                    "fontFamily": "Montserrat_200ExtraLight",
+                    "fontSize": 14,
+                  },
+                  {
+                    "marginHorizontal": 10,
+                  },
+                ]
+              }
+            >
+              /
+            </Text>
+            19.6
+          </Text>
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "inherit",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ddd",
+                "borderRadius": 10,
+                "marginHorizontal": 10,
+                "maxHeight": 180,
+                "padding": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#888",
+                  "fontFamily": "Montserrat_400Regular",
+                  "fontSize": 22,
+                },
+                undefined,
+              ]
+            }
+          >
+            17 Thu
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#888",
+                  "fontFamily": "Montserrat_500Medium",
+                  "fontSize": 16,
+                },
+                {
+                  "marginTop": 10,
+                },
+              ]
+            }
+          >
+            14.5
+            <Text
+              style={
+                [
+                  {
+                    "color": "#888",
+                    "fontFamily": "Montserrat_200ExtraLight",
+                    "fontSize": 14,
+                  },
+                  {
+                    "marginHorizontal": 10,
+                  },
+                ]
+              }
+            >
+              /
+            </Text>
+            16.6
+          </Text>
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "inherit",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ddd",
+                "borderRadius": 10,
+                "marginHorizontal": 10,
+                "maxHeight": 180,
+                "padding": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#888",
+                  "fontFamily": "Montserrat_400Regular",
+                  "fontSize": 22,
+                },
+                undefined,
+              ]
+            }
+          >
+            18 Fri
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#888",
+                  "fontFamily": "Montserrat_500Medium",
+                  "fontSize": 16,
+                },
+                {
+                  "marginTop": 10,
+                },
+              ]
+            }
+          >
+            10.5
+            <Text
+              style={
+                [
+                  {
+                    "color": "#888",
+                    "fontFamily": "Montserrat_200ExtraLight",
+                    "fontSize": 14,
+                  },
+                  {
+                    "marginHorizontal": 10,
+                  },
+                ]
+              }
+            >
+              /
+            </Text>
+            16.8
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
