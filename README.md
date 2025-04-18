@@ -28,6 +28,18 @@ npx expo start
 npm test
 ```
 
+### How to build
+```
+eas login
+
+# Generate .apk / .aab for Android
+eas build --platform android
+
+# Generate .ipa for iOS
+eas build --platform ios
+
+```
+
 ### Requirements
 - [ ] Show the current weather based on the user's location.
 - [ ] Show a list of available locations to choose from.
