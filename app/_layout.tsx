@@ -42,7 +42,7 @@ export const unstable_settings = {
 // Need it for fonts and page loading.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+const RootLayout = () => {
   const [loaded, error] = useFonts({
     Montserrat_100Thin,
     Montserrat_200ExtraLight,
@@ -65,7 +65,7 @@ export default function RootLayout() {
   }, [loaded]);
 
   return loaded ? <RootLayoutNav /> : null;
-}
+};
 
 enum TAB_ITEM {
   LOCATION = "location",
@@ -79,12 +79,16 @@ enum TAB_ICON {
 
 const RootLayoutNav = () => {
   const { setLocation } = useLocationStore();
-  const [activeTab, setActiveTab] = useState<TAB_ITEM>();
+  const [activeTab, setActiveTab] = useState<TAB_ITEM | undefined>(
+    TAB_ITEM.LOCATION,
+  );
   const [isShowCityList, setIsShowCityList] = useState(false);
+  const [selectedCityIndex, setSelectedCityIndex] = useState<number>(-1);
 
   const toggleCityList = () => setIsShowCityList(!isShowCityList);
 
   const onPressLocationTab = async () => {
+    setSelectedCityIndex(-1);
     setActiveTab(TAB_ITEM.LOCATION);
     await getCurrentCoords().then((data) =>
       setLocation({ name: "Your Location", coords: data }),
@@ -95,6 +99,11 @@ const RootLayoutNav = () => {
   const onPressCityTab = async () => {
     // set undefined for making it inactive if user clicks city tab for closing select popup
     setActiveTab(isShowCityList ? undefined : TAB_ITEM.CITY);
+    toggleCityList();
+  };
+
+  const onChangeCity = (index: number) => {
+    setSelectedCityIndex(index);
     toggleCityList();
   };
 
@@ -132,7 +141,7 @@ const RootLayoutNav = () => {
         <Stack.Screen name="index" options={{ headerShown: false }} />
       </Stack>
       <Animated.View style={cityListAnimatedStyle}>
-        <CityList onChange={toggleCityList} />
+        <CityList {...{ selectedCityIndex }} onChange={onChangeCity} />
       </Animated.View>
       <SafeAreaView edges={["bottom"]} style={styles.bottomBarContainer}>
         <View style={styles.bottomBar}>
@@ -174,3 +183,5 @@ const styles = StyleSheet.create({
     color: Colors.secondary.default,
   },
 });
+
+export default RootLayout;

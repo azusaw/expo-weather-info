@@ -5,39 +5,47 @@ import Colors from "@/constants/Colors";
 import { Text, View } from "./Themed";
 import { useLocationStore } from "@/store/useLocationStore";
 
-const CityList = React.memo(({ onChange }: { onChange: () => void }) => {
-  const { setLocation } = useLocationStore();
-  const [selectedCityIndex, setSelectedCityIndex] = useState<number>();
+const CityList = React.memo(
+  ({
+    selectedCityIndex,
+    onChange,
+  }: {
+    selectedCityIndex: number;
+    onChange: (index: number) => void;
+  }) => {
+    const { setLocation } = useLocationStore();
 
-  const onSelect = async (index: number) => {
-    setSelectedCityIndex(index); // for showing active color
-    await setLocation(CityLocations[index]);
-    onChange();
-  };
+    const onSelect = async (index: number) => {
+      onChange(index); // for showing active color
+      await setLocation(CityLocations[index]);
+    };
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.menuBox}>
-        {CityLocations.map(({ name }, index) => (
-          <TouchableOpacity key={name} onPress={() => onSelect(index)}>
-            <View
-              style={
-                index === selectedCityIndex
-                  ? styles.activeItem
-                  : styles.menuItem
-              }
-            >
-              <Text size={18} color={Colors.text.dark}>
-                {name}
-              </Text>
-            </View>
-            {index < CityLocations.length - 1 && <View style={styles.border} />}
-          </TouchableOpacity>
-        ))}
+    return (
+      <View style={styles.container}>
+        <View style={styles.menuBox}>
+          {CityLocations.map(({ name }, index) => (
+            <TouchableOpacity key={name} onPress={() => onSelect(index)}>
+              <View
+                style={
+                  index === selectedCityIndex
+                    ? styles.activeItem
+                    : styles.menuItem
+                }
+              >
+                <Text size={18} color={Colors.text.dark}>
+                  {name}
+                </Text>
+              </View>
+              {index < CityLocations.length - 1 && (
+                <View style={styles.border} />
+              )}
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
-    </View>
-  );
-});
+    );
+  },
+);
 
 const styles = StyleSheet.create({
   container: {

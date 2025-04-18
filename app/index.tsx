@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
+import useSWR from "swr";
 import { LinearGradient } from "expo-linear-gradient";
 import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
-import { Coords, CurrentWeather, DailyWeather } from "@/types";
+import { Coords } from "@/types";
 import CurrentWeatherView from "@/components/CurrentWeatherView";
 import WeeklyWeatherView from "@/components/WeeklyWeatherView";
 import BouncingDots from "@/components/BouncingDots";
@@ -16,37 +17,40 @@ import { useLocationStore } from "@/store/useLocationStore";
 import { View } from "@/components/Themed";
 import { useScreenSizeContext } from "@/components/ScreenSizeProvider";
 
+const weatherFetcher = async (coords?: Coords) => {
+  if (coords) {
+    const [currentWeather, weeklyWeather] = await Promise.all([
+      getCurrentWeatherByCoords(coords),
+      getWeeklyWeatherByCoords(coords),
+    ]);
+    return { currentWeather, weeklyWeather };
+  }
+};
+
 const Home = () => {
   const { width, isSmall } = useScreenSizeContext();
   const location = useLocationStore((state) => state.location);
   const { setLocation } = useLocationStore();
-  const [isLoading, setIsLoading] = useState(true);
-  const [currentWeather, setCurrentWeather] = useState<CurrentWeather>();
-  const [weeklyWeather, setWeeklyWeather] = useState<DailyWeather[]>();
-
-  const setCurrentLocation = async () => {
-    await getCurrentCoords().then((data) =>
-      setLocation({ name: "Your Location", coords: data }),
-    );
-  };
-
-  const refreshWeather = async (coords: Coords) => {
-    setIsLoading(true);
-    await Promise.all([
-      getCurrentWeatherByCoords(coords).then((data) => setCurrentWeather(data)),
-      getWeeklyWeatherByCoords(coords).then((data) => setWeeklyWeather(data)),
-    ]).finally(() => setIsLoading(false));
-  };
 
   useEffect(() => {
+    const setCurrentLocation = async () => {
+      await getCurrentCoords().then((data) =>
+        setLocation({ name: "Your Location", coords: data }),
+      );
+    };
     setCurrentLocation();
   }, []);
 
-  useEffect(() => {
-    location && refreshWeather(location.coords);
-  }, [location]);
+  const {
+    data: { currentWeather, weeklyWeather } = {},
+    isLoading,
+    error, //TODO: add error handling if it needed
+  } = useSWR(location?.coords ?? null, () => weatherFetcher(location?.coords), {
+    revalidateOnFocus: false, // for keeping cache
+    dedupingInterval: 600000, // cache data for 10 minutes
+  });
 
-  const animatedStyle = useAnimatedStyle(() => ({
+  const currentWeatherAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
       {
         translateY: withSpring(isLoading ? 10 : 0, {
@@ -82,7 +86,7 @@ const Home = () => {
               { maxWidth: width },
             ]}
           >
-            <Animated.View style={animatedStyle}>
+            <Animated.View style={currentWeatherAnimatedStyle}>
               {currentWeather && (
                 <CurrentWeatherView
                   siteName={location?.name}
