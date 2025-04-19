@@ -11,7 +11,7 @@ const WeeklyWeatherView = ({ data }: { data: DailyWeather[] }) => {
   return (
     <View style={{ height: isSmall ? 230 : 280, maxWidth: width }}>
       <View style={[styles.title, isSmall && styles.titleSmall]}>
-        <Text size={20} weight={300} color={Colors.text.light}>
+        <Text size={20} weight={500} color={Colors.text.light}>
           {"Weekly forecast"}
         </Text>
         <View style={styles.arrowContainer}>

@@ -57,4 +57,8 @@ This setup ensures consistent state across sessions and components without passi
 ### 3. Pre-Build static generation of city coordinate data
 Since geographic coordinates for cities are static not the same like weather data, they are retrieved at build time via the [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api) and stored in a local JSON file.
 This eliminates the need for runtime geolocation API calls.
-For adding new selectable cities, it only requires updating the `constants/Cities.ts`.
+For adding new selectable cities, it only requires updating the `constants/Cities.ts`
+
+### 4. Use axios interceptor for handling API errors
+I used `Axios interceptors` to globally handle API call errors, this prevented showing raw error messages to users and allowed us to provide consistent feedback through custom toasts.
+It also helps developers by improving maintainability and allowing flexible error mapping (404 -> "Not Found") without modifying each components.

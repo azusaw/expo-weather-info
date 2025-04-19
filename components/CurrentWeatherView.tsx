@@ -28,7 +28,7 @@ const CurrentWeatherView = ({
         {siteName}
       </Text>
       <Text size={isSmall ? 14 : 16} weight={300} style={styles.date}>
-        {dayjs(data.time).format("DD MMM ddd, hh A")}
+        {dayjs(data.time).format("DD MMM ddd, h A")}
       </Text>
       <Text size={isSmall ? 20 : 24} weight={300}>
         {getWeatherDetailFromCode(data.weatherCode).description}
