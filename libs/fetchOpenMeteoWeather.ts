@@ -4,7 +4,7 @@ import { Coords } from "@/types";
 
 const OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast";
 
-export const fetchOpenMeteo = async (
+export const fetchOpenMeteoWeather = async (
   { latitude, longitude }: Coords,
   options?: {},
 ): Promise<AxiosResponse | void> =>

@@ -1,5 +1,5 @@
 import { Coords, DailyWeather } from "@/types";
-import { fetchOpenMeteo } from "@/libs/fetchOpenMeteo";
+import { fetchOpenMeteoWeather } from "@/libs/fetchOpenMeteoWeather";
 
 type WeeklyWeatherResponse = {
   time: string[];
@@ -11,7 +11,7 @@ type WeeklyWeatherResponse = {
 export const getWeeklyWeatherByCoords = async (
   coords: Coords,
 ): Promise<DailyWeather[]> =>
-  await fetchOpenMeteo(coords, {
+  await fetchOpenMeteoWeather(coords, {
     forecast_days: 7,
     daily: ["weather_code", "temperature_2m_min", "temperature_2m_max"].join(
       ",",

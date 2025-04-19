@@ -1,0 +1,413 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorContent it calls onRetry when button is clicked 1`] = `
+<View
+  style={
+    [
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#eee",
+          "fontFamily": "Montserrat_700Bold",
+          "fontSize": 42,
+        },
+        undefined,
+      ]
+    }
+  >
+    Sorry...
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#eee",
+          "fontFamily": "Montserrat_400Regular",
+          "fontSize": 22,
+        },
+        {
+          "marginBottom": 40,
+          "marginTop": 20,
+        },
+      ]
+    }
+  >
+    Something went wrong while getting weather data.
+  </Text>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {},
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "margin": 8,
+              "textAlign": "center",
+            },
+            {
+              "color": "#445275",
+            },
+          ]
+        }
+      >
+        Retry
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ErrorContent it renders ErrorContent successfully 1`] = `
+<View
+  style={
+    [
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#eee",
+          "fontFamily": "Montserrat_700Bold",
+          "fontSize": 42,
+        },
+        undefined,
+      ]
+    }
+  >
+    Sorry...
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#eee",
+          "fontFamily": "Montserrat_400Regular",
+          "fontSize": 22,
+        },
+        {
+          "marginBottom": 40,
+          "marginTop": 20,
+        },
+      ]
+    }
+  >
+    Something went wrong while getting weather data.
+  </Text>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {},
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "margin": 8,
+              "textAlign": "center",
+            },
+            {
+              "color": "#445275",
+            },
+          ]
+        }
+      >
+        Retry
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ErrorContent it renders SvgIcon successfully 1`] = `
+<View
+  style={
+    [
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#eee",
+          "fontFamily": "Montserrat_700Bold",
+          "fontSize": 42,
+        },
+        undefined,
+      ]
+    }
+  >
+    Sorry...
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#eee",
+          "fontFamily": "Montserrat_400Regular",
+          "fontSize": 22,
+        },
+        {
+          "marginBottom": 40,
+          "marginTop": 20,
+        },
+      ]
+    }
+  >
+    Something went wrong while getting weather data.
+  </Text>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {},
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "margin": 8,
+              "textAlign": "center",
+            },
+            {
+              "color": "#445275",
+            },
+          ]
+        }
+      >
+        Retry
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ErrorContent it renders SvgIcon successfully 2`] = `
+<View
+  style={
+    [
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#eee",
+          "fontFamily": "Montserrat_700Bold",
+          "fontSize": 42,
+        },
+        undefined,
+      ]
+    }
+  >
+    Sorry...
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#eee",
+          "fontFamily": "Montserrat_400Regular",
+          "fontSize": 22,
+        },
+        {
+          "marginBottom": 40,
+          "marginTop": 20,
+        },
+      ]
+    }
+  >
+    Something went wrong while getting weather data.
+  </Text>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {},
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "margin": 8,
+              "textAlign": "center",
+            },
+            {
+              "color": "#445275",
+            },
+          ]
+        }
+      >
+        Retry
+      </Text>
+    </View>
+  </View>
+</View>
+`;

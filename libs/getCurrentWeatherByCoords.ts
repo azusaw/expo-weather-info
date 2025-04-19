@@ -1,5 +1,5 @@
 import { Coords } from "@/types";
-import { fetchOpenMeteo } from "@/libs/fetchOpenMeteo";
+import { fetchOpenMeteoWeather } from "@/libs/fetchOpenMeteoWeather";
 import { CurrentWeather } from "@/types/CurrentWeather";
 
 type CurrentWeatherResponse = {
@@ -14,7 +14,7 @@ type CurrentWeatherResponse = {
 export const getCurrentWeatherByCoords = async (
   coords: Coords,
 ): Promise<CurrentWeather> =>
-  await fetchOpenMeteo(coords, {
+  await fetchOpenMeteoWeather(coords, {
     forecast_days: 7,
     current: [
       "weather_code",

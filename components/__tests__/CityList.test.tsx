@@ -7,6 +7,7 @@ jest.mock("react-native/Libraries/Animated/Easing", () => ({
 }));
 
 const mockProps = {
+  selectedCityIndex: 0,
   onChange: jest.fn,
 };
 
@@ -27,6 +28,6 @@ describe("CityList", () => {
     const { getByText } = render(<CityList {...mockProps} />);
     const target = getByText(CityLocations[0].name);
     fireEvent.press(target);
-    waitFor(() => expect(mockProps.onChange()).toHaveBeenCalled());
+    waitFor(() => expect(mockProps.onChange).toHaveBeenCalled());
   });
 });

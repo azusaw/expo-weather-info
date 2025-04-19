@@ -21,12 +21,12 @@ import {
   Montserrat_900Black,
 } from "@expo-google-fonts/montserrat";
 import Toast from "react-native-toast-message";
+import { ScreenSizeProvider } from "@/components/ScreenSizeProvider";
 import { View } from "@/components/Themed";
 import CityList from "@/components/CityList";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import Colors from "@/constants/Colors";
 import { useLocationStore } from "@/store/useLocationStore";
-import { ScreenSizeProvider } from "@/components/ScreenSizeProvider";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -136,7 +136,6 @@ const RootLayoutNav = () => {
 
   return (
     <ScreenSizeProvider>
-      <Toast />
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
       </Stack>
@@ -159,6 +158,7 @@ const RootLayoutNav = () => {
           ))}
         </View>
       </SafeAreaView>
+      <Toast />
     </ScreenSizeProvider>
   );
 };

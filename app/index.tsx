@@ -10,12 +10,13 @@ import { getCurrentWeatherByCoords } from "@/libs/getCurrentWeatherByCoords";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import { getWeeklyWeatherByCoords } from "@/libs/getWeeklyWeatherByCoords";
 import { Coords } from "@/types";
+import { useLocationStore } from "@/store/useLocationStore";
+import { useScreenSizeContext } from "@/components/ScreenSizeProvider";
 import CurrentWeatherView from "@/components/CurrentWeatherView";
 import WeeklyWeatherView from "@/components/WeeklyWeatherView";
 import BouncingDots from "@/components/BouncingDots";
-import { useLocationStore } from "@/store/useLocationStore";
 import { View } from "@/components/Themed";
-import { useScreenSizeContext } from "@/components/ScreenSizeProvider";
+import ErrorContent from "@/components/ErrorContent";
 
 const weatherFetcher = async (coords?: Coords) => {
   if (coords) {
@@ -27,7 +28,7 @@ const weatherFetcher = async (coords?: Coords) => {
   }
 };
 
-const Home = () => {
+const Index = () => {
   const { width, isSmall } = useScreenSizeContext();
   const location = useLocationStore((state) => state.location);
   const { setLocation } = useLocationStore();
@@ -43,12 +44,16 @@ const Home = () => {
 
   const {
     data: { currentWeather, weeklyWeather } = {},
-    isLoading,
-    error, //TODO: add error handling if it needed
+    isValidating,
+    error: dataFetchError,
+    mutate: mutateWeather,
   } = useSWR(location?.coords ?? null, () => weatherFetcher(location?.coords), {
     revalidateOnFocus: false, // for keeping cache
     dedupingInterval: 600000, // cache data for 10 minutes
+    errorRetryCount: 0, // retry is handled by user clicking
   });
+
+  const isLoading = isValidating || !currentWeather || !weeklyWeather;
 
   const currentWeatherAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -73,31 +78,36 @@ const Home = () => {
       end={{ x: 0.4, y: 1 }}
       style={styles.container}
     >
-      <>
-        {isLoading ? (
-          <View style={styles.content}>
-            <BouncingDots />
-          </View>
-        ) : (
-          <ScrollView
-            contentContainerStyle={[
-              styles.content,
-              isSmall && styles.contentSmall,
-              { maxWidth: width },
-            ]}
-          >
-            <Animated.View style={currentWeatherAnimatedStyle}>
-              {currentWeather && (
-                <CurrentWeatherView
-                  siteName={location?.name}
-                  data={currentWeather}
-                />
-              )}
-              {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
-            </Animated.View>
-          </ScrollView>
-        )}
-      </>
+      {dataFetchError ? (
+        <View style={styles.content}>
+          <ErrorContent
+            message="Something went wrong while getting weather data."
+            onRetry={mutateWeather}
+          />
+        </View>
+      ) : isLoading ? (
+        <View style={styles.content}>
+          <BouncingDots />
+        </View>
+      ) : (
+        <ScrollView
+          contentContainerStyle={[
+            styles.content,
+            isSmall && styles.contentSmall,
+            { maxWidth: width },
+          ]}
+        >
+          <Animated.View style={currentWeatherAnimatedStyle}>
+            {currentWeather && (
+              <CurrentWeatherView
+                siteName={location?.name}
+                data={currentWeather}
+              />
+            )}
+            {weeklyWeather && <WeeklyWeatherView data={weeklyWeather} />}
+          </Animated.View>
+        </ScrollView>
+      )}
     </LinearGradient>
   );
 };
@@ -117,4 +127,4 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
 });
-export default Home;
+export default Index;
