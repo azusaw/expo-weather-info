@@ -5,12 +5,8 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
   style={
     [
       {
-        "backgroundColor": "inherit",
-      },
-      {
         "alignItems": "center",
         "backgroundColor": "inherit",
-        "minWidth": 400,
       },
     ]
   }
@@ -19,9 +15,9 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
     style={
       [
         {
-          "color": "#888",
-          "fontFamily": "Montserrat_900Black",
-          "fontSize": 32,
+          "color": "#eee",
+          "fontFamily": "Montserrat_700Bold",
+          "fontSize": 36,
         },
         {
           "marginBottom": 20,
@@ -35,12 +31,12 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
     style={
       [
         {
-          "color": "#888",
+          "color": "#eee",
           "fontFamily": "Montserrat_300Light",
           "fontSize": 16,
         },
         {
-          "backgroundColor": "#222",
+          "backgroundColor": "#445275",
           "borderRadius": 20,
           "color": "#fff",
           "marginBottom": 24,
@@ -56,7 +52,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
     style={
       [
         {
-          "color": "#888",
+          "color": "#eee",
           "fontFamily": "Montserrat_300Light",
           "fontSize": 24,
         },
@@ -70,9 +66,9 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
     style={
       [
         {
-          "color": "#888",
+          "color": "#eee",
           "fontFamily": "Montserrat_400Regular",
-          "fontSize": 120,
+          "fontSize": 100,
         },
         {
           "position": "relative",
@@ -84,71 +80,55 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
     <View
       style={
         [
-          {
-            "backgroundColor": "inherit",
-          },
-          {
-            "position": "absolute",
-            "right": -30,
-            "top": 30,
-          },
+          [
+            {
+              "position": "absolute",
+              "right": -30,
+              "top": 30,
+            },
+            false,
+          ],
         ]
       }
     >
       <View
         style={
           [
-            {
-              "backgroundColor": "inherit",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "#888",
-              "borderColor": "#888",
-              "borderRadius": 10,
-              "borderWidth": 4,
-              "height": 20,
-              "justifyContent": "center",
-              "width": 20,
-            },
-          ]
-        }
-      >
-        <View
-          style={
             [
               {
-                "backgroundColor": "inherit",
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderColor": "#eee",
+                "borderRadius": 10,
+                "borderWidth": 4,
+                "height": 20,
+                "justifyContent": "center",
+                "width": 20,
               },
-              {
-                "backgroundColor": "#4a4b4c",
-                "borderRadius": 5,
-                "height": 10,
-                "width": 10,
-              },
-            ]
-          }
-        />
-      </View>
+              false,
+            ],
+          ]
+        }
+      />
     </View>
   </Text>
   <View
     style={
       [
-        {
-          "backgroundColor": "inherit",
-        },
-        {
-          "alignItems": "center",
-          "backgroundColor": "#222",
-          "borderRadius": 10,
-          "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "space-evenly",
-          "marginTop": 18,
-          "paddingVertical": 30,
-          "width": 320,
-        },
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#445275",
+            "borderRadius": 10,
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "space-evenly",
+            "marginTop": 8,
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          false,
+        ],
       ]
     }
   >
@@ -156,11 +136,8 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
       style={
         [
           {
-            "backgroundColor": "inherit",
-          },
-          {
             "alignItems": "center",
-            "backgroundColor": "transparent",
+            "padding": 15,
           },
         ]
       }
@@ -169,7 +146,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         align="xMidYMid"
         bbHeight={40}
         bbWidth={40}
-        fill="#ddd"
+        fill="#7CBFC3"
         focusable={false}
         height={40}
         meetOrSlice={0}
@@ -195,7 +172,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         <RNSVGGroup
           fill={
             {
-              "payload": 4292730333,
+              "payload": 4286365635,
               "type": 0,
             }
           }
@@ -220,7 +197,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         style={
           [
             {
-              "color": "#888",
+              "color": "#eee",
               "fontFamily": "Montserrat_400Regular",
               "fontSize": 18,
             },
@@ -236,7 +213,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         style={
           [
             {
-              "color": "#888",
+              "color": "#eee",
               "fontFamily": "Montserrat_400Regular",
               "fontSize": 14,
             },
@@ -253,11 +230,8 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
       style={
         [
           {
-            "backgroundColor": "inherit",
-          },
-          {
             "alignItems": "center",
-            "backgroundColor": "transparent",
+            "padding": 15,
           },
         ]
       }
@@ -266,7 +240,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         align="xMidYMid"
         bbHeight={40}
         bbWidth={40}
-        fill="#ddd"
+        fill="#7CBFC3"
         focusable={false}
         height={40}
         meetOrSlice={0}
@@ -292,7 +266,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         <RNSVGGroup
           fill={
             {
-              "payload": 4292730333,
+              "payload": 4286365635,
               "type": 0,
             }
           }
@@ -317,7 +291,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         style={
           [
             {
-              "color": "#888",
+              "color": "#eee",
               "fontFamily": "Montserrat_400Regular",
               "fontSize": 18,
             },
@@ -333,7 +307,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         style={
           [
             {
-              "color": "#888",
+              "color": "#eee",
               "fontFamily": "Montserrat_400Regular",
               "fontSize": 14,
             },
@@ -350,11 +324,8 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
       style={
         [
           {
-            "backgroundColor": "inherit",
-          },
-          {
             "alignItems": "center",
-            "backgroundColor": "transparent",
+            "padding": 15,
           },
         ]
       }
@@ -363,7 +334,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         align="xMidYMid"
         bbHeight={40}
         bbWidth={40}
-        fill="#ddd"
+        fill="#7CBFC3"
         focusable={false}
         height={40}
         meetOrSlice={0}
@@ -389,7 +360,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         <RNSVGGroup
           fill={
             {
-              "payload": 4292730333,
+              "payload": 4286365635,
               "type": 0,
             }
           }
@@ -433,7 +404,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         style={
           [
             {
-              "color": "#888",
+              "color": "#eee",
               "fontFamily": "Montserrat_400Regular",
               "fontSize": 18,
             },
@@ -449,7 +420,7 @@ exports[`CurrentWeatherView it renders CurrentWeatherView successfully 1`] = `
         style={
           [
             {
-              "color": "#888",
+              "color": "#eee",
               "fontFamily": "Montserrat_400Regular",
               "fontSize": 14,
             },

@@ -5,9 +5,6 @@ exports[`WeatherImage it renders WeatherImage successfully 1`] = `
   style={
     [
       {
-        "backgroundColor": "inherit",
-      },
-      {
         "alignItems": "center",
       },
     ]
@@ -53,7 +50,7 @@ exports[`WeatherImage it renders WeatherImage successfully 1`] = `
     style={
       [
         {
-          "color": "#888",
+          "color": "#eee",
           "fontFamily": "Montserrat_300Light",
           "fontSize": 14,
         },

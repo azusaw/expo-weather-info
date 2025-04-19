@@ -4,17 +4,20 @@ exports[`DailyWeatherCard it renders DailyWeatherCard successfully 1`] = `
 <View
   style={
     [
-      {
-        "backgroundColor": "inherit",
-      },
-      {
-        "alignItems": "center",
-        "backgroundColor": "#ddd",
-        "borderRadius": 10,
-        "marginHorizontal": 10,
-        "maxHeight": 180,
-        "padding": 20,
-      },
+      [
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff30",
+          "borderRadius": 10,
+          "elevation": 10,
+          "margin": 10,
+          "padding": 20,
+          "shadowColor": "#dddddd30",
+          "shadowOpacity": 0.8,
+          "shadowRadius": 10,
+        },
+        false,
+      ],
     ]
   }
 >
@@ -22,9 +25,9 @@ exports[`DailyWeatherCard it renders DailyWeatherCard successfully 1`] = `
     style={
       [
         {
-          "color": "#888",
+          "color": "#eee",
           "fontFamily": "Montserrat_400Regular",
-          "fontSize": 22,
+          "fontSize": 20,
         },
         undefined,
       ]
@@ -35,9 +38,6 @@ exports[`DailyWeatherCard it renders DailyWeatherCard successfully 1`] = `
   <View
     style={
       [
-        {
-          "backgroundColor": "inherit",
-        },
         {
           "alignItems": "center",
         },
@@ -84,7 +84,7 @@ exports[`DailyWeatherCard it renders DailyWeatherCard successfully 1`] = `
       style={
         [
           {
-            "color": "#888",
+            "color": "#eee",
             "fontFamily": "Montserrat_300Light",
             "fontSize": 14,
           },
@@ -99,7 +99,7 @@ exports[`DailyWeatherCard it renders DailyWeatherCard successfully 1`] = `
     style={
       [
         {
-          "color": "#888",
+          "color": "#eee",
           "fontFamily": "Montserrat_500Medium",
           "fontSize": 16,
         },
@@ -114,7 +114,7 @@ exports[`DailyWeatherCard it renders DailyWeatherCard successfully 1`] = `
       style={
         [
           {
-            "color": "#888",
+            "color": "#eee",
             "fontFamily": "Montserrat_200ExtraLight",
             "fontSize": 14,
           },

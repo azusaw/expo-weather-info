@@ -5,7 +5,7 @@ exports[`Text it renders Text successfully 1`] = `
   style={
     [
       {
-        "color": "#888",
+        "color": "#eee",
         "fontFamily": "Montserrat_400Regular",
         "fontSize": 24,
       },
@@ -17,28 +17,10 @@ exports[`Text it renders Text successfully 1`] = `
 </Text>
 `;
 
-exports[`View it renders Text successfully 1`] = `
-<View
-  style={
-    [
-      {
-        "backgroundColor": "inherit",
-      },
-      undefined,
-    ]
-  }
->
-  Hello
-</View>
-`;
-
 exports[`View it renders View successfully 1`] = `
 <View
   style={
     [
-      {
-        "backgroundColor": "inherit",
-      },
       undefined,
     ]
   }

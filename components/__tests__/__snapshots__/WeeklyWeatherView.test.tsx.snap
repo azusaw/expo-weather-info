@@ -5,10 +5,8 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
   style={
     [
       {
-        "backgroundColor": "inherit",
-      },
-      {
-        "maxWidth": 750,
+        "height": 280,
+        "maxWidth": 0,
       },
     ]
   }
@@ -16,17 +14,17 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
   <View
     style={
       [
-        {
-          "backgroundColor": "inherit",
-        },
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "marginBottom": 10,
-          "marginTop": 20,
-          "paddingHorizontal": 20,
-        },
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginBottom": 10,
+            "marginTop": 20,
+            "paddingHorizontal": 20,
+          },
+          false,
+        ],
       ]
     }
   >
@@ -34,7 +32,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
       style={
         [
           {
-            "color": "#ccc",
+            "color": "#eee",
             "fontFamily": "Montserrat_300Light",
             "fontSize": 20,
           },
@@ -48,9 +46,6 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
       style={
         [
           {
-            "backgroundColor": "inherit",
-          },
-          {
             "backgroundColor": "transparent",
             "height": 50,
             "position": "relative",
@@ -63,14 +58,11 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
       <View
         style={
           [
-            {
-              "backgroundColor": "inherit",
-            },
             [
               {
-                "backgroundColor": "#ccc",
+                "backgroundColor": "#eee",
                 "borderRadius": 5,
-                "height": 2,
+                "height": 1,
                 "position": "absolute",
               },
               {
@@ -84,14 +76,11 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
       <View
         style={
           [
-            {
-              "backgroundColor": "inherit",
-            },
             [
               {
-                "backgroundColor": "#ccc",
+                "backgroundColor": "#eee",
                 "borderRadius": 5,
-                "height": 2,
+                "height": 1,
                 "position": "absolute",
               },
               {
@@ -102,7 +91,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
                     "rotate": "45deg",
                   },
                 ],
-                "width": 16,
+                "width": 15,
               },
             ],
           ]
@@ -113,6 +102,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
   <RCTScrollView
     contentContainerStyle={
       {
+        "height": "100%",
         "paddingHorizontal": 10,
       }
     }
@@ -171,17 +161,20 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
         <View
           style={
             [
-              {
-                "backgroundColor": "inherit",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ddd",
-                "borderRadius": 10,
-                "marginHorizontal": 10,
-                "maxHeight": 180,
-                "padding": 20,
-              },
+              [
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff30",
+                  "borderRadius": 10,
+                  "elevation": 10,
+                  "margin": 10,
+                  "padding": 20,
+                  "shadowColor": "#dddddd30",
+                  "shadowOpacity": 0.8,
+                  "shadowRadius": 10,
+                },
+                false,
+              ],
             ]
           }
         >
@@ -189,9 +182,9 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
             style={
               [
                 {
-                  "color": "#888",
+                  "color": "#eee",
                   "fontFamily": "Montserrat_400Regular",
-                  "fontSize": 22,
+                  "fontSize": 20,
                 },
                 undefined,
               ]
@@ -202,9 +195,6 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
           <View
             style={
               [
-                {
-                  "backgroundColor": "inherit",
-                },
                 {
                   "alignItems": "center",
                 },
@@ -251,7 +241,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
               style={
                 [
                   {
-                    "color": "#888",
+                    "color": "#eee",
                     "fontFamily": "Montserrat_300Light",
                     "fontSize": 14,
                   },
@@ -266,7 +256,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
             style={
               [
                 {
-                  "color": "#888",
+                  "color": "#eee",
                   "fontFamily": "Montserrat_500Medium",
                   "fontSize": 16,
                 },
@@ -281,7 +271,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
               style={
                 [
                   {
-                    "color": "#888",
+                    "color": "#eee",
                     "fontFamily": "Montserrat_200ExtraLight",
                     "fontSize": 14,
                   },
@@ -312,17 +302,20 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
         <View
           style={
             [
-              {
-                "backgroundColor": "inherit",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ddd",
-                "borderRadius": 10,
-                "marginHorizontal": 10,
-                "maxHeight": 180,
-                "padding": 20,
-              },
+              [
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff30",
+                  "borderRadius": 10,
+                  "elevation": 10,
+                  "margin": 10,
+                  "padding": 20,
+                  "shadowColor": "#dddddd30",
+                  "shadowOpacity": 0.8,
+                  "shadowRadius": 10,
+                },
+                false,
+              ],
             ]
           }
         >
@@ -330,9 +323,9 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
             style={
               [
                 {
-                  "color": "#888",
+                  "color": "#eee",
                   "fontFamily": "Montserrat_400Regular",
-                  "fontSize": 22,
+                  "fontSize": 20,
                 },
                 undefined,
               ]
@@ -344,7 +337,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
             style={
               [
                 {
-                  "color": "#888",
+                  "color": "#eee",
                   "fontFamily": "Montserrat_500Medium",
                   "fontSize": 16,
                 },
@@ -359,7 +352,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
               style={
                 [
                   {
-                    "color": "#888",
+                    "color": "#eee",
                     "fontFamily": "Montserrat_200ExtraLight",
                     "fontSize": 14,
                   },
@@ -390,17 +383,20 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
         <View
           style={
             [
-              {
-                "backgroundColor": "inherit",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ddd",
-                "borderRadius": 10,
-                "marginHorizontal": 10,
-                "maxHeight": 180,
-                "padding": 20,
-              },
+              [
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff30",
+                  "borderRadius": 10,
+                  "elevation": 10,
+                  "margin": 10,
+                  "padding": 20,
+                  "shadowColor": "#dddddd30",
+                  "shadowOpacity": 0.8,
+                  "shadowRadius": 10,
+                },
+                false,
+              ],
             ]
           }
         >
@@ -408,9 +404,9 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
             style={
               [
                 {
-                  "color": "#888",
+                  "color": "#eee",
                   "fontFamily": "Montserrat_400Regular",
-                  "fontSize": 22,
+                  "fontSize": 20,
                 },
                 undefined,
               ]
@@ -422,7 +418,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
             style={
               [
                 {
-                  "color": "#888",
+                  "color": "#eee",
                   "fontFamily": "Montserrat_500Medium",
                   "fontSize": 16,
                 },
@@ -437,7 +433,7 @@ exports[`WeeklyWeatherView it renders WeeklyWeatherView successfully 1`] = `
               style={
                 [
                   {
-                    "color": "#888",
+                    "color": "#eee",
                     "fontFamily": "Montserrat_200ExtraLight",
                     "fontSize": 14,
                   },

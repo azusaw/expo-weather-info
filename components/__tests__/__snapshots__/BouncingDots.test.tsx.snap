@@ -14,7 +14,7 @@ exports[`BouncingDots it renders BouncingDots successfully 1`] = `
     collapsable={false}
     style={
       {
-        "backgroundColor": "#ffa7c5",
+        "backgroundColor": "#fddab6",
         "borderRadius": 5,
         "height": 20,
         "marginHorizontal": 5,
@@ -31,7 +31,7 @@ exports[`BouncingDots it renders BouncingDots successfully 1`] = `
     collapsable={false}
     style={
       {
-        "backgroundColor": "#f33b7b",
+        "backgroundColor": "#ff9b5d",
         "borderRadius": 5,
         "height": 20,
         "marginHorizontal": 5,
@@ -48,7 +48,7 @@ exports[`BouncingDots it renders BouncingDots successfully 1`] = `
     collapsable={false}
     style={
       {
-        "backgroundColor": "#e41965",
+        "backgroundColor": "#ff6d1c",
         "borderRadius": 5,
         "height": 20,
         "marginHorizontal": 5,

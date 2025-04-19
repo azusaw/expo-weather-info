@@ -1,7 +1,7 @@
 import { createContext, useContext, PropsWithChildren } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
 
-const ScreenSizeContext = createContext<{
+export const ScreenSizeContext = createContext<{
   isSmall: boolean;
   height: number;
   width: number;
