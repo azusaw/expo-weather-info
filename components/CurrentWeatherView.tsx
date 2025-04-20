@@ -33,14 +33,16 @@ const CurrentWeatherView = ({
       <Text size={isSmall ? 20 : 24} weight={300}>
         {getWeatherDetailFromCode(data.weatherCode).description}
       </Text>
-      <Text size={isSmall ? 80 : 100} weight={400} style={styles.temperature}>
-        {data.temperature}
+      <View style={styles.temperatureContainer}>
+        <Text size={isSmall ? 80 : 100} weight={400} style={styles.temperature}>
+          {data.temperature}
+        </Text>
         <View style={[styles.unit, isSmall && styles.unitSmall]}>
           <View
             style={[styles.unitCircle, isSmall && styles.unitCircleSmall]}
           />
         </View>
-      </Text>
+      </View>
       <View style={[styles.card, isSmall && styles.cardSmall]}>
         {infoItems.map(({ label, icon, data }) => (
           <View key={label} style={styles.cardItem}>
@@ -78,13 +80,17 @@ const styles = StyleSheet.create({
     color: "#fff",
     marginBottom: 24,
   },
+  temperatureContainer: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+  },
   temperature: {
     position: "relative",
   },
   unit: {
     position: "absolute",
     top: 30,
-    right: -30,
+    right: -25,
   },
   unitSmall: {
     position: "absolute",
@@ -113,7 +119,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginTop: 8,
     borderRadius: 10,
     backgroundColor: Colors.primary.dark,
   },

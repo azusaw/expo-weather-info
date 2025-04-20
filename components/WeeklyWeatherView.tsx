@@ -24,7 +24,7 @@ const WeeklyWeatherView = ({ data }: { data: DailyWeather[] }) => {
         data={data}
         renderItem={({ item }) => <DailyWeatherCard {...item} />}
         keyExtractor={(item) => item.time}
-        contentContainerStyle={{ paddingHorizontal: 10, height: "100%" }}
+        contentContainerStyle={{ paddingHorizontal: 0, height: "100%" }}
       />
     </View>
   );
@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 20,
-    marginBottom: 10,
     marginTop: 20,
   },
   titleSmall: {

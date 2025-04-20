@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -32,13 +32,15 @@ const Index = () => {
   const { width, isSmall } = useScreenSizeContext();
   const location = useLocationStore((state) => state.location);
   const { setLocation } = useLocationStore();
+  const [geolocationError, setGeolocationError] = useState();
+
+  const setCurrentLocation = async () => {
+    await getCurrentCoords()
+      .then((data) => setLocation({ name: "Your Location", coords: data }))
+      .catch(setGeolocationError);
+  };
 
   useEffect(() => {
-    const setCurrentLocation = async () => {
-      await getCurrentCoords().then((data) =>
-        setLocation({ name: "Your Location", coords: data }),
-      );
-    };
     setCurrentLocation();
   }, []);
 
@@ -78,11 +80,11 @@ const Index = () => {
       end={{ x: 0.4, y: 1 }}
       style={styles.container}
     >
-      {dataFetchError ? (
+      {geolocationError || dataFetchError ? (
         <View style={styles.content}>
           <ErrorContent
-            message="Something went wrong while getting weather data."
-            onRetry={mutateWeather}
+            message={`Something went wrong while getting ${geolocationError ? "your location" : "weather data"}.`}
+            onRetry={geolocationError ? setCurrentLocation : mutateWeather}
           />
         </View>
       ) : isLoading ? (
@@ -121,7 +123,8 @@ const styles = StyleSheet.create({
   content: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 40, // for menu button
+    marginTop: 20,
+    paddingVertical: 40, // for menu button
   },
   contentSmall: {
     paddingTop: 20,

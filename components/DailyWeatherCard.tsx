@@ -17,10 +17,10 @@ const DailyWeatherCard = ({
     <View style={[styles.card, isSmall && styles.cardSmall]}>
       <Text size={isSmall ? 16 : 20}>{dayjs(time).format("DD ddd")}</Text>
       <WeatherImage weatherCode={weatherCode} />
-      <Text size={16} weight={500} style={{ marginTop: 10 }}>
+      <Text size={isSmall ? 16 : 20} weight={500} style={{ marginTop: 10 }}>
         {temperatureMin}
-        <Text size={14} weight={200} style={{ marginHorizontal: 10 }}>
-          {"/"}
+        <Text size={14} weight={200}>
+          {" / "}
         </Text>
         {temperatureMax}
       </Text>

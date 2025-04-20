@@ -11,7 +11,7 @@ export const axiosInstance = axios.create({
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.log("Error:", error); // for dev
+    console.log("Axios error", error); // for dev
     Toast.show({
       type: "error",
       text1: "Failed to fetch data",

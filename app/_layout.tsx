@@ -142,10 +142,18 @@ const RootLayoutNav = () => {
       <Animated.View style={cityListAnimatedStyle}>
         <CityList {...{ selectedCityIndex }} onChange={onChangeCity} />
       </Animated.View>
-      <SafeAreaView edges={["bottom"]} style={styles.bottomBarContainer}>
+      <View style={styles.bottomBarContainer}>
         <View style={styles.bottomBar}>
           {tabs.map(({ key, icon, onPress }) => (
-            <Pressable onPress={onPress}>
+            <Pressable
+              key={key}
+              onPress={onPress}
+              style={{
+                ...styles.iconContainer,
+                backgroundColor:
+                  activeTab === key ? "#ffffff30" : "transparent",
+              }}
+            >
               <TabBarIcon
                 name={icon}
                 color={
@@ -157,7 +165,7 @@ const RootLayoutNav = () => {
             </Pressable>
           ))}
         </View>
-      </SafeAreaView>
+      </View>
       <Toast />
     </ScreenSizeProvider>
   );
@@ -174,13 +182,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: "#ffffff50",
+  },
+  iconContainer: {
+    width: "50%",
+    alignItems: "center",
     paddingVertical: 10,
-  },
-  tabItem: {
-    color: Colors.primary.default,
-  },
-  activeTabItem: {
-    color: Colors.secondary.default,
   },
 });
 

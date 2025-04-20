@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-weather-info",
-    "slug": "expo-weather-info",
+    "name": "azu tenki",
+    "slug": "azu tenki",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
