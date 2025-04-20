@@ -31,14 +31,15 @@ npm test
 eas login
 
 # Generate .apk / .aab for Android
-eas build --platform android
-eas build --platform android --profile production
+npm run build-android-apk
+npm run build-android-aab
 
 # Generate .ipa for iOS
-eas build --platform ios
+npm run build-ios
 
 ```
 
+<<<<<<< Updated upstream
 ## How it works
 ### .apk Download link
 [Download installer for Android}()
@@ -50,6 +51,8 @@ eas build --platform ios
 
 ### demo - Expo App on iOS
 
+## How it looks
+Download `.apk` for Android: [azu-tenki]()
 ## Requirements
 - [x] Show the current weather based on the user's location.
 - [x] Show a list of available locations to choose from.
