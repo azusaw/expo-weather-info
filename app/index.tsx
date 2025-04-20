@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -28,31 +28,39 @@ const weatherFetcher = async (coords?: Coords) => {
   }
 };
 
+enum ErrorType {
+  GEOLOCATION = "GEOLOCATION",
+  WEATHER = "WEATHER",
+}
+
 const Index = () => {
+  const [errorType, setErrorType] = useState<ErrorType | undefined>();
   const { width, isSmall } = useScreenSizeContext();
   const location = useLocationStore((state) => state.location);
   const { setLocation } = useLocationStore();
-  const [geolocationError, setGeolocationError] = useState();
 
-  const setCurrentLocation = async () => {
-    await getCurrentCoords()
-      .then((data) => setLocation({ name: "Your Location", coords: data }))
-      .catch(setGeolocationError);
-  };
-
-  useEffect(() => {
-    setCurrentLocation();
-  }, []);
+  const { mutate: mutateLocation } = useSWR(
+    "currentLocation",
+    () => getCurrentCoords(),
+    {
+      revalidateOnFocus: false, // for keeping cache
+      dedupingInterval: 600000, // cache data for 10 minutes
+      errorRetryCount: 0, // retry is handled by user clicking
+      onSuccess: (data) => setLocation({ name: "Your Location", coords: data }),
+      onError: () => setErrorType(ErrorType.GEOLOCATION),
+    },
+  );
 
   const {
     data: { currentWeather, weeklyWeather } = {},
     isValidating,
-    error: dataFetchError,
     mutate: mutateWeather,
   } = useSWR(location?.coords ?? null, () => weatherFetcher(location?.coords), {
     revalidateOnFocus: false, // for keeping cache
     dedupingInterval: 600000, // cache data for 10 minutes
     errorRetryCount: 0, // retry is handled by user clicking
+    onSuccess: () => setErrorType(undefined), //ignore geolocation error for city selecting
+    onError: () => setErrorType(ErrorType.WEATHER),
   });
 
   const isLoading = isValidating || !currentWeather || !weeklyWeather;
@@ -80,11 +88,15 @@ const Index = () => {
       end={{ x: 0.4, y: 1 }}
       style={styles.container}
     >
-      {geolocationError || dataFetchError ? (
+      {errorType ? (
         <View style={styles.content}>
           <ErrorContent
-            message={`Something went wrong while getting ${geolocationError ? "your location" : "weather data"}.`}
-            onRetry={geolocationError ? setCurrentLocation : mutateWeather}
+            message={`Something went wrong while getting ${errorType === ErrorType.GEOLOCATION ? "your location" : "weather data"}.`}
+            onRetry={
+              errorType === ErrorType.GEOLOCATION
+                ? mutateLocation
+                : mutateWeather
+            }
           />
         </View>
       ) : isLoading ? (

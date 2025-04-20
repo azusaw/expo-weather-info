@@ -9,7 +9,7 @@ const ErrorContent = ({
   message: string;
   onRetry: () => void;
 }) => (
-  <View>
+  <View style={styles.container}>
     <Text size={42} weight={700} color={Colors.text.light}>
       Sorry...
     </Text>
@@ -21,6 +21,9 @@ const ErrorContent = ({
 );
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+  },
   description: {
     marginTop: 20,
     marginBottom: 40,

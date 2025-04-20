@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import CityLocations from "@/assets/json/city-location.json";
 import Colors from "@/constants/Colors";
@@ -17,7 +17,8 @@ const CityList = React.memo(
 
     const onSelect = async (index: number) => {
       onChange(index); // for showing active color
-      await setLocation(CityLocations[index]);
+      const coords = CityLocations[index];
+      await setLocation(coords);
     };
 
     return (

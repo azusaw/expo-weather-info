@@ -15,29 +15,23 @@ export const getCurrentCoords = async (): Promise<Coords> => {
       text1: "Unable to retrieve your location",
       text2: "Please reconnect internet and try again.",
     });
-    throw Error;
+    throw new Error("No internet connection");
   }
 
   // check location permission
-  await getLocationPermissions();
-
-  return getCurrentPositionAsync().then(
-    ({ coords }) =>
-      ({
-        latitude: coords?.latitude,
-        longitude: coords?.longitude,
-      }) as Coords,
-  );
-};
-
-const getLocationPermissions = async () => {
-  let { status } = await requestForegroundPermissionsAsync();
-  if (status !== "granted") {
+  let permission = await requestForegroundPermissionsAsync();
+  if (permission?.status !== "granted") {
     Toast.show({
       type: "error",
       text1: "Permission is denied",
       text2: "Location permission is required in system settings.",
     });
-    throw Error;
+    throw new Error("No permission for user location");
   }
+
+  const { coords } = await getCurrentPositionAsync();
+  return {
+    latitude: coords.latitude,
+    longitude: coords.longitude,
+  };
 };

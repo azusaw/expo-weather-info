@@ -20,15 +20,4 @@ export const useLocationStore = create<Store>((set) => ({
     await AsyncStorage.setItem("longitude", `${location.coords.longitude}`);
     set({ location });
   },
-  // loadCoords: async () => {
-  //   const name = await AsyncStorage.getItem("name");
-  //   const latitude = await AsyncStorage.getItem("latitude");
-  //   const longitude = await AsyncStorage.getItem("longitude");
-  //   set({
-  //     location: {
-  //       name: name ?? "",
-  //       coords: { latitude: Number(latitude), longitude: Number(longitude) },
-  //     },
-  //   });
-  // },
 }));

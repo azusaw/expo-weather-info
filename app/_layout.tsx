@@ -27,6 +27,7 @@ import CityList from "@/components/CityList";
 import { getCurrentCoords } from "@/libs/getCurrentCoords";
 import Colors from "@/constants/Colors";
 import { useLocationStore } from "@/store/useLocationStore";
+import { mutate } from "swr";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -90,9 +91,12 @@ const RootLayoutNav = () => {
   const onPressLocationTab = async () => {
     setSelectedCityIndex(-1);
     setActiveTab(TAB_ITEM.LOCATION);
-    await getCurrentCoords().then((data) =>
-      setLocation({ name: "Your Location", coords: data }),
-    );
+    try {
+      const coords = await getCurrentCoords();
+      setLocation({ name: "Your Location", coords });
+    } catch (err) {
+      mutate("currentLocation"); // for showing error screen
+    }
     isShowCityList && toggleCityList();
   };
 
@@ -142,7 +146,7 @@ const RootLayoutNav = () => {
       <Animated.View style={cityListAnimatedStyle}>
         <CityList {...{ selectedCityIndex }} onChange={onChangeCity} />
       </Animated.View>
-      <View style={styles.bottomBarContainer}>
+      <SafeAreaView edges={["bottom"]} style={styles.bottomBarContainer}>
         <View style={styles.bottomBar}>
           {tabs.map(({ key, icon, onPress }) => (
             <Pressable
@@ -165,7 +169,7 @@ const RootLayoutNav = () => {
             </Pressable>
           ))}
         </View>
-      </View>
+      </SafeAreaView>
       <Toast />
     </ScreenSizeProvider>
   );
@@ -174,6 +178,7 @@ const RootLayoutNav = () => {
 const styles = StyleSheet.create({
   bottomBarContainer: {
     alignItems: "center",
+    backgroundColor: "inherit",
   },
   bottomBar: {
     position: "absolute",
