@@ -39,17 +39,18 @@ npm run build-ios
 
 ```
 
-<<<<<<< Updated upstream
 ## How it works
 ### .apk Download link
-[Download installer for Android}()
+[Download .apk file for Android}(https://drive.google.com/file/d/1F7v44ohaneo5Hn-CBhTHgJhICZ-x1chx/view?usp=drive_link)
 
 ### Screen image
 <img width="300" alt="index-image" src="https://github.com/user-attachments/assets/af2988c0-b232-43f6-91d9-8a619f62b8ce" />
 
 ### demo - Native App on Android
+https://github.com/user-attachments/assets/46d8bc65-88f4-4079-9b77-f7379009facf
 
 ### demo - Expo App on iOS
+https://github.com/user-attachments/assets/ed18fa7b-733f-4cc9-9139-95927809597f
 
 ## How it looks
 Download `.apk` for Android: [azu-tenki]()
