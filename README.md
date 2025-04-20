@@ -1,5 +1,4 @@
 # expo-weather-info
-
 ## Environment / Libraries 🔧
 * node `20.19.0`
 * npm `10.8.2`
@@ -40,7 +39,16 @@ eas build --platform ios
 
 ```
 
-## How it looks
+## How it works
+### .apk Download link
+[Download installer for Android}()
+
+### Screen image
+<img width="300" alt="index-image" src="https://github.com/user-attachments/assets/af2988c0-b232-43f6-91d9-8a619f62b8ce" />
+
+### demo - Native App on Android
+
+### demo - Expo App on iOS
 
 ## Requirements
 - [x] Show the current weather based on the user's location.
@@ -78,7 +86,9 @@ It can be achieved by creating a custom hook using `@react-native-community/neti
 ### 🍏 iOS build
 I haven't run build it for iOS because I don’t have a valid Apple Developer license. ($99/year) 
 
-### Create more tests (lib / e2e)
+### Create more tests (libs / e2e)
 At the moment, I only have unit tests for components.
 
-## Test coverage
+## Test code coverage
+<img width="1400" alt="test-code-coverage" src="https://github.com/user-attachments/assets/5764d119-69c4-4584-a85d-f588db7a574b" />
+
