@@ -41,7 +41,7 @@ npm run build-ios
 
 ## How it works
 ### .apk Download link
-[Download .apk file for Android}(https://drive.google.com/file/d/1F7v44ohaneo5Hn-CBhTHgJhICZ-x1chx/view?usp=drive_link)
+[Download .apk file for Android](https://drive.google.com/file/d/1F7v44ohaneo5Hn-CBhTHgJhICZ-x1chx/view?usp=drive_link)
 
 ### Screen image
 <img width="300" alt="index-image" src="https://github.com/user-attachments/assets/af2988c0-b232-43f6-91d9-8a619f62b8ce" />
