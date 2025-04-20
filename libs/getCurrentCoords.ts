@@ -3,14 +3,31 @@ import {
   getCurrentPositionAsync,
   requestForegroundPermissionsAsync,
 } from "expo-location";
+import NetInfo from "@react-native-community/netinfo";
 import Toast from "react-native-toast-message";
 
-export const getCurrentCoords = async () => {
+export const getCurrentCoords = async (): Promise<Coords> => {
+  // check network
+  const { isConnected } = await NetInfo.fetch();
+  if (!isConnected) {
+    Toast.show({
+      type: "error",
+      text1: "Unable to retrieve your location",
+      text2: "Please reconnect internet and try again.",
+    });
+    throw Error;
+  }
+
+  // check location permission
   await getLocationPermissions();
-  const {
-    coords: { latitude, longitude },
-  } = await getCurrentPositionAsync();
-  return { latitude, longitude } as Coords;
+
+  return getCurrentPositionAsync().then(
+    ({ coords }) =>
+      ({
+        latitude: coords?.latitude,
+        longitude: coords?.longitude,
+      }) as Coords,
+  );
 };
 
 const getLocationPermissions = async () => {
@@ -18,8 +35,9 @@ const getLocationPermissions = async () => {
   if (status !== "granted") {
     Toast.show({
       type: "error",
-      text1: "Permission was denied",
-      text2: "It needs a location permission from a system settings.",
+      text1: "Permission is denied",
+      text2: "Location permission is required in system settings.",
     });
+    throw Error;
   }
 };
