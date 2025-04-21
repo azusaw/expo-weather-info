@@ -59,7 +59,7 @@ npm run build-ios
         <img width="250" alt="index-image" src="https://github.com/user-attachments/assets/af2988c0-b232-43f6-91d9-8a619f62b8ce" />
       </td>
       <td>
-        <img width="250" alt="index-image" src="https://github.com/user-attachments/assets/a616ef8b-9ebb-459e-a782-c711b9d90969" />
+        <img width="250" alt="index-image" src="https://github.com/user-attachments/assets/c888b77e-9434-4631-94a4-757000d2f98a" />
       </td>
       <td>
         <img width="250" alt="index-image" src="https://github.com/user-attachments/assets/0bb4b498-10b5-4ad0-be71-06d0a155876f" />
