@@ -1,4 +1,6 @@
 # expo-weather-info
+[Download .apk file for Android](https://drive.google.com/file/d/1F7v44ohaneo5Hn-CBhTHgJhICZ-x1chx/view?usp=drive_link)
+
 ## Environment / Libraries 🔧
 * node `20.19.0`
 * npm `10.8.2`
@@ -15,6 +17,9 @@
 
 ## How to run
 ```
+# install dependencies
+npm i
+
 # Retrieve city location data and store them into a static file
 npm run prebuild
 
@@ -39,21 +44,30 @@ npm run build-ios
 
 ```
 
-## How it works
-### .apk Download link
-[Download .apk file for Android](https://drive.google.com/file/d/1F7v44ohaneo5Hn-CBhTHgJhICZ-x1chx/view?usp=drive_link)
+## Demo - How it works
+<table>
+  <thead>
+    <tr>
+      <th>Screen shot</th>
+      <th>Android - Native app</th>
+      <th>iOS - Expo app</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <img width="250" alt="index-image" src="https://github.com/user-attachments/assets/af2988c0-b232-43f6-91d9-8a619f62b8ce" />
+      </td>
+      <td>
+        <img width="250" alt="index-image" src="https://github.com/user-attachments/assets/a616ef8b-9ebb-459e-a782-c711b9d90969" />
+      </td>
+      <td>
+        <img width="250" alt="index-image" src="https://github.com/user-attachments/assets/0bb4b498-10b5-4ad0-be71-06d0a155876f" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-### Screen image
-<img width="300" alt="index-image" src="https://github.com/user-attachments/assets/af2988c0-b232-43f6-91d9-8a619f62b8ce" />
-
-### demo - Native App on Android
-https://github.com/user-attachments/assets/46d8bc65-88f4-4079-9b77-f7379009facf
-
-### demo - Expo App on iOS
-https://github.com/user-attachments/assets/ed18fa7b-733f-4cc9-9139-95927809597f
-
-## How it looks
-Download `.apk` for Android: [azu-tenki]()
 ## Requirements
 - [x] Show the current weather based on the user's location.
 - [x] Show a list of available locations to choose from.
